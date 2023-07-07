@@ -7,6 +7,7 @@ import {
 import { NavBar } from './components/NavBar.js';
 import { Homepage } from './components/Homepage.js';
 import { Register } from './components/Register.js';
+import { Login } from './components/Login.js';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path= "" element={<Homepage />}/>
           <Route path= "/register" element={<Register />}/>
+          <Route path= "/login" element={<Login />}/>
         </Routes>
       </Router>
     </div>

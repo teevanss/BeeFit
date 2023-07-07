@@ -31,7 +31,7 @@
     font-display: swap;
 }
 
-/************ Register CSS ************/
+/************ Login CSS ************/
 .animate__fadeIn {
     background-image: linear-gradient(to bottom, #ffb313 10%, #ffebc04a);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 7px 0px;
@@ -39,16 +39,16 @@
     padding: 3rem;
 }
 
-.register {
+.login {
     margin-top: 0;
-    padding: 10% 0 30% 0;
+    padding: 15% 0 30% 0;
     background-image: url('../images/background.png');
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.register h1 {
+.login h1 {
     text-align: center;
     font-family: AgrandirWide, sans-serif;
     font-size: 65px;
@@ -58,7 +58,7 @@
     display: block;
 }
 
-.register h2 {
+.login h2 {
     color: #000000 !important;
     font-family: TelegrafBold, sans-serif;
     text-align: center;
@@ -68,11 +68,11 @@
     width: 100%;
 }
 
-.register a {
+.login a {
     color: #000000 !important;
 }
 
-.register p {
+.login p {
     text-align: center;
     font-family: TelegrafReg, sans-serif;
     color: #000000;
@@ -83,7 +83,7 @@
     width: 100%;
 }
 
-.register input {
+.login input {
     width: 100%;
     border: none;
     margin-top: 2rem;
@@ -91,7 +91,7 @@
     height: 3rem;
 }
 
-.register input[type=text] {
+.login input[type=text] {
     font-family: TelegrafReg, sans-serif;
     color: #5d5d5d;
     font-size: 18px;
@@ -101,7 +101,7 @@
     width: 100%;
 }
 
-.register input[type=password] {
+.login input[type=password] {
     font-family: TelegrafReg, sans-serif;
     color: #5d5d5d;
     font-size: 18px;
@@ -111,7 +111,7 @@
     width: 100%;
 }
 
-.register input::placeholder {
+.login input::placeholder {
     font-family: TelegrafReg, sans-serif;
     color: #5d5d5d;
     font-size: 18px;
@@ -121,19 +121,19 @@
     width: 100%;
 }
 
-.register button:not(:disabled):hover {
+.login button:not(:disabled):hover {
     transform: scale(1.05);
   }
   
-  .register button:not(:disabled):hover:active {
+  .login button:not(:disabled):hover:active {
     transform: scale(1.05) translateY(.125rem);
   }
   
-  .register button:focus {
+  .login button:focus {
     outline: 0 solid transparent;
   }
   
-  .register button:focus:before {
+  .login button:focus:before {
     content: "";
     left: calc(-1*.375rem);
     pointer-events: none;
@@ -143,23 +143,25 @@
     user-select: none;
   }
   
-  .register button:focus:not(:focus-visible) {
+  .login button:focus:not(:focus-visible) {
     outline: 0 solid transparent;
   }
   
-  .register button:focus:not(:focus-visible):before {
+  .login button:focus:not(:focus-visible):before {
     border-width: 0;
   }
   
-  .register button:not(:disabled):active {
+  .login button:not(:disabled):active {
     transform: translateY(.125rem);
   }
   
-  .register button {
+  .login button {
     display: flex;
     text-align: center;
+    margin-top: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
     font-family: TelegrafBold, sans-serif;
-    margin: auto;
     padding: 17px 40px 14px;
     border: 1px solid rgb(255, 255, 255);
     flex-basis: 150px;

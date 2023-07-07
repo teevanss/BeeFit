@@ -53,7 +53,7 @@ export const NavBar = () => {
 
           <Navbar.Collapse id="basic-navbar-nav">
 
-            <Navbar.Brand href="/">
+            <Navbar.Brand>
                 <Link to="/">
                     <img className="logo" src={logo} alt="BeeFit logo" onClick={() => onUpdateActiveLink('home')}/>
                 </Link>
