@@ -4,7 +4,7 @@ import 'animate.css';
 import Daisy from "../images/daisy.png";
 import Daisy2 from "../images/daisy2.png";
 import Daisy3 from "../images/daisy3.png";
-import BeeHappy from "../images/bee-happy.svg";
+import BeeStick from "../images/bee-stick.svg";
 
 export const Login = () => {
 
@@ -16,7 +16,7 @@ export const Login = () => {
 
             <Col xs={14} md={8} xl={6}>
                 <div className="animate__animated animate__zoomIn">
-                <img className="bee" src={BeeHappy} alt="A happy bee"/>
+                <img className="bee" src={BeeStick} alt="Bee holding honey stick"/>
                 </div>
             </Col>
 
