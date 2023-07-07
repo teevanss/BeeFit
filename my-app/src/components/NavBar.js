@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { BrowserRouter as Router } from "react-router-dom";
-import logo from "../images/logo1.svg";
+import logo from "../images/logo.svg";
 
 export const NavBar = () => {
 
@@ -45,10 +45,10 @@ export const NavBar = () => {
 
             <Nav className="ms-auto">
                 <div className={activeLink == 'register' ? 'active-button-nav' : 'button-nav'} onClick={() => onUpdateActiveLink('register')}>
-                    <Nav.Link href="#Register">Register</Nav.Link>
+                    <Nav.Link href="/register">Register</Nav.Link>
                 </div>
                 <div className={activeLink == 'login' ? 'active-button-nav' : 'button-nav'} onClick={() => onUpdateActiveLink('login')}>
-                    <Nav.Link href="#Login">Login</Nav.Link>
+                    <Nav.Link href="/login">Login</Nav.Link>
                 </div>
             </Nav>
 

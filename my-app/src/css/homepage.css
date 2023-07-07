@@ -23,6 +23,7 @@
     font-display: swap;
 }
 
+/************ Homepage CSS ************/
 .animate__fadeIn {
     background-image: linear-gradient(to bottom right, #ffb313 10%, #ffebc04a);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -30,7 +31,6 @@
     padding: 3rem;
 }
 
-/************ Homepage CSS ************/
 .home {
     margin-top: 0;
     padding: 20% 0 30% 0;
@@ -59,19 +59,24 @@
     font-size: 20px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
-    width: 96%;
+    width: 100%;
 }
 
 .home button {
     font-family: TelegrafReg, sans-serif;
     color: #000000;
     font-size: 20px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
     width: 100%;
 }
+
 /************ Images ************/
 .bee {
-    width: 60%;
-    margin-left: 7.5rem;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     animation: updown 3s linear infinite;
 }
 

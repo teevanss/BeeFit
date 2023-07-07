@@ -2,22 +2,25 @@
 @font-face {
 	font-family: 'TelegrafBold';
 	src: url('./fonts/PPTelegraf-Ultrabold.otf');
+  font-weight: 700;
+  font-style: none;
+  font-display: swap;
 }
 
 @font-face {
 	font-family: 'TelegrafLight';
 	src: url('./fonts/PPTelegraf-Ultralight.otf');
-    font-weight: 700;
-    font-style: none;
-    font-display: swap;
+  font-weight: 700;
+  font-style: none;
+  font-display: swap;
 }
 
 @font-face {
 	font-family: 'AgrandirWide';
 	src: url('./fonts/Agrandir-GrandHeavy.otf');
-    font-weight: 300;
-    font-style: none;
-    font-display: swap;
+  font-weight: 300;
+  font-style: none;
+  font-display: swap;
 }
 
 /************ Default CSS ************/
@@ -92,6 +95,7 @@ nav.navbar {
   transition:  0.32s ease-in-out;
 }
 
+/* Navbar no longer transparent once page is scrolled */
 nav.navbar.scrolled {
   background-color: #ffb313;
   box-shadow: rgba(0, 0, 0, 0.286) 0px 7px 29px 0px;
