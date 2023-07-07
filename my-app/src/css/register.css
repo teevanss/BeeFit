@@ -1,0 +1,35 @@
+/************ Fonts ************/
+@font-face {
+	font-family: 'TelegrafReg';
+	src: url('../fonts/PPTelegraf-Regular.otf');
+    font-weight: 700;
+    font-style: none;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'TelegrafLight';
+	src: url('../fonts/PPTelegraf-Ultralight.otf');
+    font-weight: 700;
+    font-style: none;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'AgrandirWide';
+	src: url('../fonts/Agrandir-WideBlackItalic.otf');
+    font-weight: 300;
+    font-style: none;
+    font-display: swap;
+}
+
+/************ Register CSS ************/
+
+.register {
+    margin-top: 0;
+    padding: 20% 0 30% 0;
+    background-image: url('../images/background.png');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

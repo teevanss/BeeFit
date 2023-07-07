@@ -11,11 +11,11 @@ import { Register } from './components/Register.js';
 function App() {
   return (
     <div className="App">
-      <NavBar />
       <Router>
+      <NavBar />
         <Routes>
-          <Route path= "" element={<Homepage />}></Route>
-          <Route path= "/register" element={<Register />}></Route>
+          <Route path= "" element={<Homepage />}/>
+          <Route path= "/register" element={<Register />}/>
         </Routes>
       </Router>
     </div>
