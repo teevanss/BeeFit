@@ -1,0 +1,115 @@
+/************ Fonts ************/
+@font-face {
+	font-family: 'TelegrafReg';
+	src: url('../fonts/PPTelegraf-Regular.otf');
+    font-weight: 700;
+    font-style: none;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'TelegrafLight';
+	src: url('../fonts/PPTelegraf-Ultralight.otf');
+    font-weight: 700;
+    font-style: none;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'AgrandirWide';
+	src: url('../fonts/Agrandir-WideBlackItalic.otf');
+    font-weight: 300;
+    font-style: none;
+    font-display: swap;
+}
+
+.animate__fadeIn {
+    background-image: linear-gradient(to bottom right, #ffb313 10%, #ffebc04a);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 1rem;
+    padding: 3rem;
+}
+
+/************ Homepage CSS ************/
+.home {
+    margin-top: 0;
+    padding: 20% 0 30% 0;
+    background-image: url('../images/background.png');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.home h1 {
+    font-family: AgrandirWide, sans-serif;
+    font-size: 65px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    line-height: 1;
+    display: block;
+}
+  
+.home a {
+    color: #000000 !important;
+}
+
+.home p {
+    font-family: TelegrafReg, sans-serif;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 96%;
+}
+
+.home button {
+    font-family: TelegrafReg, sans-serif;
+    color: #000000;
+    font-size: 20px;
+    width: 100%;
+}
+/************ Images ************/
+.bee {
+    width: 60%;
+    margin-left: 7.5rem;
+    animation: updown 3s linear infinite;
+}
+
+.daisy {
+    margin-left: -5%;
+    top: -9%;
+    padding: 0;
+    z-index: 1000;
+    position: fixed;
+    width: 10%;
+}
+
+.daisy2 {
+    margin-left: -5%;
+    bottom: -17%;
+    padding: 0;
+    z-index: 1000;
+    position: fixed;
+    width: 20%;
+}
+
+.daisy3 {
+    right: -7%;
+    bottom: -14%;
+    padding: 0;
+    z-index: 1000;
+    position: fixed;
+    width: 20%;
+}
+
+@keyframes updown {
+    0% {
+        transform: translateY(-20px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
