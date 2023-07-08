@@ -1,4 +1,4 @@
-package com.cuddlecottage.hello;
+package com.cuddlecottage.beefit;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

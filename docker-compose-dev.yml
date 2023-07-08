@@ -1,0 +1,8 @@
+version: '3'
+services:
+  cuddlecottage-db:
+    image: mongo:4.2.2
+    environment:
+      - MONGO_INIT_DATABASE=beefit-web
+    ports:
+      - 27017:27017

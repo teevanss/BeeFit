@@ -1,4 +1,4 @@
-package com.cuddlecottage.hello;
+package com.cuddlecottage.beefit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
