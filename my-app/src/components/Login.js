@@ -1,4 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { BrowserRouter, Link } from "react-router-dom";
 import '../css/login.css';
 import 'animate.css';
 import Daisy from "../images/daisy.png";
@@ -29,17 +30,19 @@ export const Login = () => {
                         <h1>Log<a>in</a></h1>
                         <h2>Bee-lieve in yourself!</h2>
 
-                        <input type="text" placeholder="Enter Username" name="uname" required></input>
-                        <input type="password" placeholder="Enter Password" name="psw" required></input>
+                        <input type="text" placeholder="Enter Username" name="uname" required className="text"></input>
+                        <input type="password" placeholder="Enter Password" name="psw" required className="text"></input>
+
+                        <span>
+                            <div className="checkbox">
+                                <input type="checkbox" checked="checked" name="remember"></input>
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <Link to="/forgotpassword"><p><a href="#">Forgot password?</a></p></Link>
+                        </span>
 
                         <button type="submit">Login</button>
-                        {/*<label>
-                        <input type="checkbox" checked="checked" name="remember">Remember me</input>
-                        </label>*/}
-                    </div>
 
-                    <div class="container">
-                        <p>Forgot <a href="#">password?</a></p>
                     </div>
                 </form>
             </div>

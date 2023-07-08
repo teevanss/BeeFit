@@ -1,4 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { BrowserRouter, Link } from "react-router-dom";
 import '../css/register.css';
 import 'animate.css';
 import BeeHappy from "../images/bee-happy.svg";
@@ -37,8 +38,8 @@ export const Register = () => {
                         <button type="submit" class="registerbtn">Register</button>
                     </div>
 
-                    <div class="container signin">
-                        <p>Already have an account? <a href="#">Sign in</a></p>
+                    <div className="sign-in">
+                        Already have an account? <Link to="/login"><a href="#">Sign in</a></Link>
                     </div>
                 </form>
             </div>

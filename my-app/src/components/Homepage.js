@@ -1,5 +1,6 @@
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import { Container, Row, Col } from "react-bootstrap";
+import { BrowserRouter, Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import '../css/homepage.css';
 import 'animate.css';
@@ -22,9 +23,7 @@ export const Homepage = () => {
                 <div className="animate__animated animate__fadeIn">
                     <h1>Welcome to B<a>ee</a>Fit!</h1>
                     <p>Buzz! Daily self care is finally fun - take care of your pet by taking care of yourself!</p>
-                    <Nav>
-                        <Nav.Link href="/register"><button>Get started <ArrowRightCircle size={25} /></button></Nav.Link>
-                    </Nav>
+                    <Link to ="/register"><button>Get started <ArrowRightCircle size={25} /></button></Link>
                 </div>
 
             </Col>

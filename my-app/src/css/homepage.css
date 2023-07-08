@@ -40,6 +40,21 @@
     background-repeat: no-repeat;
 }
 
+.home button svg {
+    font-size: 25px;
+    line-height: 1;
+    margin-left: 10px;
+    transition: .3s ease-in-out;
+}
+
+.home button {
+    text-align: left;
+}
+
+.home button:hover svg {
+    margin-left: 25px;
+  }
+
 .home h1 {
     font-family: AgrandirWide, sans-serif;
     font-size: 65px;
