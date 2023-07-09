@@ -17,7 +17,7 @@ export const Login = () => {
 
             <Col xs={14} md={8} xl={6}>
                 <div className="animate__animated animate__zoomIn">
-                <img className="bee" src={BeeStick} alt="Bee holding honey stick"/>
+                    <img className="bee" src={BeeStick} alt="Bee holding honey stick"/>
                 </div>
             </Col>
 
@@ -33,13 +33,7 @@ export const Login = () => {
                         <input type="text" placeholder="Enter Username" name="uname" required className="text"></input>
                         <input type="password" placeholder="Enter Password" name="psw" required className="text"></input>
 
-                        <span>
-                            <div className="checkbox">
-                                <input type="checkbox" checked="checked" name="remember"></input>
-                                <label for="remember">Remember me</label>
-                            </div>
-                            <Link to="/forgotpassword"><p><a href="#">Forgot password?</a></p></Link>
-                        </span>
+                        <Link to="/forgotpassword"><p><a href="#">Forgot password?</a></p></Link>
 
                         <button type="submit">Login</button>
 
@@ -47,18 +41,13 @@ export const Login = () => {
                 </form>
             </div>
             </Col>
+            
             </Row>
         </Container>
 
-        <div className="daisy">
-            <img src={Daisy} alt="Daisy"/>
-        </div>
-        <div className="daisy2">
-            <img src={Daisy2} alt="Daisy"/>
-        </div>
-        <div className="daisy3">
-            <img src={Daisy3} alt="Daisy"/>
-        </div>
+        <img src={Daisy} className="daisy" alt="Daisy"/>
+        <img src={Daisy2} className="daisy2" alt="Daisy"/>
+        <img src={Daisy3} className="daisy3" alt="Daisy"/>
         
         </section>
     )

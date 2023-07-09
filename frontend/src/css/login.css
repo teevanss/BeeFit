@@ -75,6 +75,7 @@
 
 .login p {
     text-align: left;
+    padding-top: 1rem;
     font-family: TelegrafReg, sans-serif;
     color: #000000;
     font-size: 15px;
@@ -91,13 +92,7 @@
     height: 3rem;
 }
 
-.login span {
-    padding-top: 1rem;
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.login input[type=text] {
+.login input {
     font-family: TelegrafReg, sans-serif;
     color: #5d5d5d;
     font-size: 18px;
@@ -107,17 +102,7 @@
     width: 100%;
 }
 
-.checkbox {
-    text-align: right;
-    font-family: TelegrafReg, sans-serif;
-    color: #000000;
-    font-size: 15px;
-    letter-spacing: 0.8px;
-    line-height: 1.5em;
-    width: 100%;
-}
-
-.login input[type=password] {
+.login input:focus, textarea:focus {
     font-family: TelegrafReg, sans-serif;
     color: #5d5d5d;
     font-size: 18px;
@@ -125,6 +110,7 @@
     letter-spacing: 0.8px;
     line-height: 1.5em;
     width: 100%;
+    background-color: rgb(255, 246, 189);
 }
 
 .login input::placeholder {
@@ -137,19 +123,20 @@
     width: 100%;
 }
 
+/************ Login Button CSS ************/
 .login button:not(:disabled):hover {
     transform: scale(1.05);
-  }
+}
   
-  .login button:not(:disabled):hover:active {
+.login button:not(:disabled):hover:active {
     transform: scale(1.05) translateY(.125rem);
-  }
+}
   
-  .login button:focus {
+.login button:focus {
     outline: 0 solid transparent;
-  }
+}
   
-  .login button:focus:before {
+.login button:focus:before {
     content: "";
     left: calc(-1*.375rem);
     pointer-events: none;
@@ -157,21 +144,21 @@
     top: calc(-1*.375rem);
     transition: border-radius;
     user-select: none;
-  }
+}
   
-  .login button:focus:not(:focus-visible) {
+.login button:focus:not(:focus-visible) {
     outline: 0 solid transparent;
-  }
+}
   
-  .login button:focus:not(:focus-visible):before {
+.login button:focus:not(:focus-visible):before {
     border-width: 0;
-  }
+}
   
-  .login button:not(:disabled):active {
+.login button:not(:disabled):active {
     transform: translateY(.125rem);
-  }
+}
   
-  .login button {
+.login button {
     display: flex;
     text-align: center;
     margin-top: 1.5rem;
@@ -201,4 +188,4 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-  }
+}

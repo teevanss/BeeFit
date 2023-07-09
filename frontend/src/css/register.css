@@ -102,7 +102,7 @@
     height: 3rem;
 }
 
-.register input[type=text] {
+.register input {
     font-family: TelegrafReg, sans-serif;
     color: #5d5d5d;
     font-size: 18px;
@@ -112,7 +112,7 @@
     width: 100%;
 }
 
-.register input[type=password] {
+.register input:focus, textarea:focus {
     font-family: TelegrafReg, sans-serif;
     color: #5d5d5d;
     font-size: 18px;
@@ -120,6 +120,7 @@
     letter-spacing: 0.8px;
     line-height: 1.5em;
     width: 100%;
+    background-color: rgb(255, 246, 189);
 }
 
 .register input::placeholder {
@@ -132,17 +133,18 @@
     width: 100%;
 }
 
+/************ Register Button CSS ************/
 .register button:not(:disabled):hover {
     transform: scale(1.05);
-  }
+}
   
   .register button:not(:disabled):hover:active {
     transform: scale(1.05) translateY(.125rem);
-  }
+}
   
   .register button:focus {
     outline: 0 solid transparent;
-  }
+}
   
   .register button:focus:before {
     content: "";
@@ -152,19 +154,19 @@
     top: calc(-1*.375rem);
     transition: border-radius;
     user-select: none;
-  }
+}
   
   .register button:focus:not(:focus-visible) {
     outline: 0 solid transparent;
-  }
+}
   
   .register button:focus:not(:focus-visible):before {
     border-width: 0;
-  }
+}
   
   .register button:not(:disabled):active {
     transform: translateY(.125rem);
-  }
+}
   
   .register button {
     display: flex;
@@ -194,4 +196,4 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-  }
+}

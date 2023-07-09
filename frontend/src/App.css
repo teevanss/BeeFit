@@ -201,6 +201,34 @@ nav.navbar.scrolled {
 }
 }
 
+/************ Images CSS ************/
+.daisy {
+  margin-left: -5%;
+  top: -9%;
+  padding: 0;
+  z-index: 1000;
+  position: fixed;
+  width: 10%;
+}
+
+.daisy2 {
+  margin-left: -5%;
+  bottom: -17%;
+  padding: 0;
+  z-index: 1000;
+  position: fixed;
+  width: 20%;
+}
+
+.daisy3 {
+  right: -7%;
+  bottom: -14%;
+  padding: 0;
+  z-index: 1000;
+  position: fixed;
+  width: 20%;
+}
+
 /************ Scrollbar ************/
 :root { 
   background-color:  #ffb313;

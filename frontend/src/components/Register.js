@@ -1,5 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter, Link } from "react-router-dom";
+import { useContext } from 'react';
+import { MyContext } from '../MyContext';
 import '../css/register.css';
 import 'animate.css';
 import BeeHappy from "../images/bee-happy.svg";
@@ -10,6 +12,12 @@ import Daisy3 from "../images/daisy3.png";
 
 export const Register = () => {
 
+    const {activeLink, setActiveLink} = useContext(MyContext);
+
+    const onUpdateActiveLink = (value) => {
+        setActiveLink(value);
+      }
+
     return ( 
 
         <section className="register" id="register">
@@ -18,7 +26,7 @@ export const Register = () => {
 
             <Col xs={7} md={4} xl={3}>
                 <div className="animate__animated animate__zoomIn">
-                <img className="bee" src={BeeHappy} alt="A happy bee"/>
+                    <img className="bee" src={BeeHappy} alt="A happy bee"/>
                 </div>
             </Col>
 
@@ -39,29 +47,25 @@ export const Register = () => {
                     </div>
 
                     <div className="sign-in">
-                        Already have an account? <Link to="/login"><a href="#">Sign in</a></Link>
+                        Already have an account? <Link to="/login"><a onClick={() => onUpdateActiveLink('login')}>Sign in</a></Link>
                     </div>
                 </form>
             </div>
             </Col>
+
             <Col xs={7} md={4} xl={3}>
                 <div className="animate__animated animate__zoomIn">
-                <img className="bee" src={BeeHoney} alt="Bee holding honey"/>
+                    <img className="bee" src={BeeHoney} alt="Bee holding honey"/>
                 </div>
             </Col>
+            
             </Row>
         </Container>
 
-        <div className="daisy">
-            <img src={Daisy} alt="Daisy"/>
-        </div>
-        <div className="daisy2">
-            <img src={Daisy2} alt="Daisy"/>
-        </div>
-        <div className="daisy3">
-            <img src={Daisy3} alt="Daisy"/>
-        </div>
-    
+        <img src={Daisy} className="daisy" alt="Daisy"/>
+        <img src={Daisy2} className="daisy2" alt="Daisy"/>
+        <img src={Daisy3} className="daisy3" alt="Daisy"/>
+
         </section>
     )
 }

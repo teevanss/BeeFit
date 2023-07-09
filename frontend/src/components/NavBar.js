@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { BrowserRouter, Link } from "react-router-dom";
+import { useContext } from 'react';
+import { MyContext } from '../MyContext';
 import logo from "../images/logo.svg";
 
 export const NavBar = () => {
 
-  const [activeLink, setActiveLink] = useState("home");
+  const {activeLink, setActiveLink} = useContext(MyContext);
   const [scrolled, setScrolled] = useState(false);
 
   // To change background color on NavBar
@@ -23,23 +25,8 @@ export const NavBar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [])
 
-  // To change CSS for active link (maybe reuse for darkmode)
-  /*
-  useEffect(() => {
-    console.log(localStorage.getItem("Link"))
-    if(localStorage.getItem("Link") === null){
-        setActiveLink("home");
-        localStorage.setItem("Link", JSON.stringify(activeLink));
-    }
-    else {
-        const val = JSON.parse(localStorage.getItem("Link"))
-        setActiveLink(val);
-    }
-  }, [activeLink]);
-*/
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
-    //localStorage.setItem("Link", JSON.stringify(value));
   }
 
   return (
