@@ -23,7 +23,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfiguration{
+public class WebSecurityConfiguration {
 
     @Autowired
     private LoginSuccessHandler loginSuccessHandler;
@@ -35,6 +35,7 @@ public class WebSecurityConfiguration{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
             .csrf(csrf -> csrf.disable())
+            .cors(withDefaults())
             .authorizeHttpRequests(auth -> {
                 auth.requestMatchers("/").permitAll();
                 auth.requestMatchers("/hello").permitAll();

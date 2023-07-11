@@ -10,6 +10,7 @@ import com.cuddlecottage.beefit.service.CheckInService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/checkin")
 public class CheckInController {
     @Autowired
