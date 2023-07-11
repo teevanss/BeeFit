@@ -1,3 +1,9 @@
+:root {
+    --text-color: white; 
+    --text-color2: black;
+    --bee-yellow: #ffb313;
+}
+
 /************ Fonts ************/
 @font-face {
 	font-family: 'TelegrafReg';
@@ -25,16 +31,26 @@
 
 /************ Homepage CSS ************/
 .animate__fadeIn {
-    background-image: linear-gradient(to bottom right, #ffb313 10%, #ffebc04a);
+    background-image: linear-gradient(to bottom right, var(--bee-yellow) 10%, #ffebc04a);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 1rem;
     padding: 3rem;
+    transition: 0.3s ease-in-out;
 }
 
-.home {
+#home {
     margin-top: 0;
     padding: 20% 0 30% 0;
     background-image: url('../images/background.png');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#home-dark {
+    margin-top: 0;
+    padding: 20% 0 30% 0;
+    background-image: url('../images/background-night.png');
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -44,11 +60,12 @@
     font-size: 25px;
     line-height: 1;
     margin-left: 10px;
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
 .home button {
     text-align: left;
+    transition: 0.3s ease-in-out;
 }
 
 .home button:hover svg {
@@ -59,27 +76,30 @@
     font-family: AgrandirWide, sans-serif;
     font-size: 65px;
     letter-spacing: 1px;
-    color: #ffffff;
+    color: var(--text-color);
     line-height: 1;
     display: block;
+    transition: 0.3s ease-in-out;
 }
   
 .home a {
-    color: #000000 !important;
+    color: var(--text-color2) !important;
+    transition: 0.3s ease-in-out;
 }
 
 .home p {
     font-family: TelegrafReg, sans-serif;
-    color: #000000;
+    color: var(--text-color2);
     font-size: 20px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
     width: 100%;
+    transition: 0.3s ease-in-out;
 }
 
 .home button {
     font-family: TelegrafReg, sans-serif;
-    color: #000000;
+    color: var(--text-color2);
     font-size: 20px;
     letter-spacing: 0.8px;
     line-height: 1.5em;

@@ -15,11 +15,12 @@ import { MyContext } from "./MyContext";
 function App() {
 
   const [activeLink, setActiveLink] = useState("home");
+  const [theme, setTheme] = useState("light");
 
   return (
     <div className="App">
       <Router>
-        <MyContext.Provider value={{ activeLink, setActiveLink }}>
+        <MyContext.Provider value={{ activeLink, setActiveLink, theme, setTheme}}>
         <NavBar />
           <Routes>
             <Route path= "" element={<Homepage />}/>

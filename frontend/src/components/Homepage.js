@@ -6,21 +6,28 @@ import { MyContext } from '../MyContext';
 import '../css/homepage.css';
 import 'animate.css';
 import BeeFlower from "../images/bee-flower.svg";
-import Daisy from "../images/daisy.png";
-import Daisy2 from "../images/daisy2.png";
-import Daisy3 from "../images/daisy3.png";
+import BeeFlowerDark from "../images/bee-dark.svg";
 
 export const Homepage = () => {
 
     const {activeLink, setActiveLink} = useContext(MyContext);
+    const {theme, setTheme} = useContext(MyContext);
 
     const onUpdateActiveLink = (value) => {
         setActiveLink(value);
       }
 
+    //Display image based off current theme 
+    let beeImage;
+    if (theme == "light") {
+        beeImage = <img className="bee" src={BeeFlower} alt="Bee holding flower"/>
+    }
+    else {
+        beeImage = <img className="bee" src={BeeFlowerDark} alt="Bee holding flower"/>
+    }
     return ( 
 
-        <section className="home" id="home">
+        <section className="home" id={theme == 'light' ? 'home' : 'home-dark'}>
         <Container>
             <Row className="align-items-center">
 
@@ -35,17 +42,12 @@ export const Homepage = () => {
 
             <Col xs={14} md={8} xl={6}>
                 <div className="animate__animated animate__zoomIn">
-                    <img className="bee" src={BeeFlower} alt="Bee holding flower"/>
+                    {beeImage}
                 </div>
             </Col>
             
             </Row>
         </Container>
-
-        <img src={Daisy} className="daisy" alt="Daisy"/>
-        <img src={Daisy2} className="daisy2" alt="Daisy"/>
-        <img src={Daisy3} className="daisy3" alt="Daisy"/>
-
         </section>
   )
 }

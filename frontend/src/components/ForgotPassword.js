@@ -6,9 +6,6 @@ import '../css/forgotpassword.css';
 import 'animate.css';
 import BeeHappy from "../images/bee-happy.svg";
 import BeeHoney from "../images/bee-honey.svg";
-import Daisy from "../images/daisy.png";
-import Daisy2 from "../images/daisy2.png";
-import Daisy3 from "../images/daisy3.png";
 
 export const ForgotPassword = () => {
 
@@ -55,14 +52,9 @@ export const ForgotPassword = () => {
                     <img className="bee" src={BeeHoney} alt="Bee holding honey"/>
                 </div>
             </Col>
-            
+
             </Row>
         </Container>
-
-        <img src={Daisy} className="daisy" alt="Daisy"/>
-        <img src={Daisy2} className="daisy2" alt="Daisy"/>
-        <img src={Daisy3} className="daisy3" alt="Daisy"/>
-
         </section>
     )
 }

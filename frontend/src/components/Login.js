@@ -4,14 +4,12 @@ import { useContext } from 'react';
 import { MyContext } from '../MyContext';
 import '../css/login.css';
 import 'animate.css';
-import Daisy from "../images/daisy.png";
-import Daisy2 from "../images/daisy2.png";
-import Daisy3 from "../images/daisy3.png";
 import BeeStick from "../images/bee-stick.svg";
 
 export const Login = () => {
 
     const {activeLink, setActiveLink} = useContext(MyContext);
+    const {theme, setTheme} = useContext(MyContext);
 
     const onUpdateActiveLink = (value) => {
         setActiveLink(value);
@@ -19,7 +17,7 @@ export const Login = () => {
 
     return ( 
 
-        <section className="login" id="login">
+        <section className="login" id={theme == 'light' ? 'login' : 'login-dark'}>
         <Container>
             <Row className="align-items-center">
 
@@ -51,12 +49,7 @@ export const Login = () => {
             </Col>
             
             </Row>
-        </Container>
-
-        <img src={Daisy} className="daisy" alt="Daisy"/>
-        <img src={Daisy2} className="daisy2" alt="Daisy"/>
-        <img src={Daisy3} className="daisy3" alt="Daisy"/>
-        
+        </Container>  
         </section>
     )
 }

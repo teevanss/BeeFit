@@ -1,3 +1,10 @@
+:root {
+  --text-color: white; 
+  --text-color2: black;
+  --bee-yellow: #ffb313;
+  --scroll-bar: #582c08;
+}
+
 /************ Fonts ************/
 @font-face {
 	font-family: 'TelegrafBold';
@@ -97,7 +104,7 @@ nav.navbar {
 
 /* Navbar no longer transparent once page is scrolled */
 nav.navbar.scrolled {
-  background-color: #ffb313;
+  background-color: var(--bee-yellow);
   box-shadow: rgba(0, 0, 0, 0.286) 0px 7px 29px 0px;
 }
 
@@ -219,37 +226,9 @@ nav.navbar.scrolled {
 }
 }
 
-/************ Images CSS ************/
-.daisy {
-  margin-left: -5%;
-  top: -9%;
-  padding: 0;
-  z-index: 1000;
-  position: fixed;
-  width: 10%;
-}
-
-.daisy2 {
-  margin-left: -5%;
-  bottom: -17%;
-  padding: 0;
-  z-index: 1000;
-  position: fixed;
-  width: 20%;
-}
-
-.daisy3 {
-  right: -7%;
-  bottom: -14%;
-  padding: 0;
-  z-index: 1000;
-  position: fixed;
-  width: 20%;
-}
-
 /************ Scrollbar ************/
 :root { 
-  background-color:  #ffb313;
+  background-color: var(--bee-yellow);
 }
 
 ::-webkit-scrollbar {
@@ -264,7 +243,7 @@ nav.navbar.scrolled {
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
   transition: 0.3s ease-in-out;
-  background: #582c08;
+  background: var(--scroll-bar);
 }
 
 ::-webkit-scrollbar-thumb:hover {

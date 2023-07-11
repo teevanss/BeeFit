@@ -32,13 +32,6 @@
 }
 
 /************ Login CSS ************/
-.animate__fadeIn {
-    background-image: linear-gradient(to bottom, #ffb313 10%, #ffebc04a);
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 7px 0px;
-    border-radius: 1rem;
-    padding: 3rem;
-}
-
 .login {
     margin-top: 0;
     padding: 15% 0 30% 0;

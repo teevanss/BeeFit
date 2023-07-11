@@ -1,26 +1,34 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter, Link } from "react-router-dom";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { MyContext } from '../MyContext';
 import '../css/register.css';
 import 'animate.css';
 import BeeHappy from "../images/bee-happy.svg";
 import BeeHoney from "../images/bee-honey.svg";
-import Daisy from "../images/daisy.png";
-import Daisy2 from "../images/daisy2.png";
-import Daisy3 from "../images/daisy3.png";
 
 export const Register = () => {
 
+    const registerForm = {
+        userName: '',
+        password: '',
+        confirmPassword: '',
+      };
+
+    //Set new user
+    const [user, setUser] = useState(registerForm);
+    //Set activeLink
     const {activeLink, setActiveLink} = useContext(MyContext);
+    //Set theme
+    const {theme, setTheme} = useContext(MyContext);
 
     const onUpdateActiveLink = (value) => {
         setActiveLink(value);
-      }
+      };
 
     return ( 
 
-        <section className="register" id="register">
+        <section className="register" id={theme == 'light' ? 'register' : 'register-dark'}>
         <Container>
             <Row className="align-items-center">
 
@@ -61,11 +69,6 @@ export const Register = () => {
             
             </Row>
         </Container>
-
-        <img src={Daisy} className="daisy" alt="Daisy"/>
-        <img src={Daisy2} className="daisy2" alt="Daisy"/>
-        <img src={Daisy3} className="daisy3" alt="Daisy"/>
-
         </section>
     )
 }
