@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import { MyContext } from '../MyContext';
 import '../css/forgotpassword.css';
@@ -9,15 +9,11 @@ import BeeHoney from "../images/bee-honey.svg";
 
 export const ForgotPassword = () => {
 
-    const {activeLink, setActiveLink} = useContext(MyContext);
-
-    const onUpdateActiveLink = (value) => {
-        setActiveLink(value);
-      }
+    const {theme, setTheme} = useContext(MyContext);
 
     return ( 
 
-        <section className="forgotpassword" id="forgotpassword">
+        <section className="forgotpassword" id={theme === 'light' ? 'forgotpassword' : 'forgotpassword-dark'}>
         <Container>
             <Row className="align-items-center">
 
@@ -31,17 +27,17 @@ export const ForgotPassword = () => {
             <Col xs={14} md={8} xl={6}>
             <div className="animate__animated animate__fadeIn">
                 <form action="action_page.php">
-                    <div class="container">
+                    <div className="container">
                         <h1>Reset Pass<a>word</a></h1>
                         <h2>Please enter the email associated with your account.</h2>
 
                         <input type="text" placeholder="Enter Email" name="email" id="email" required></input><br></br>
 
-                        <button type="submit" class="submitbtn">Submit</button>
+                        <button type="submit" className="submitbtn">Submit</button>
                     </div>
 
                     <div className="sign-in">
-                        Don't have an account? <Link to="/register"><a onClick={() => onUpdateActiveLink('register')}>Register</a></Link>
+                        Don't have an account? <Link to="/register"><a>Register</a></Link>
                     </div>
                 </form>
             </div>

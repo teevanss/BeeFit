@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -14,19 +13,19 @@ import { MyContext } from "./MyContext";
 
 function App() {
 
-  const [activeLink, setActiveLink] = useState("home");
+  // Theme is light by default
   const [theme, setTheme] = useState("light");
-
+  
   return (
     <div className="App">
       <Router>
-        <MyContext.Provider value={{ activeLink, setActiveLink, theme, setTheme}}>
-        <NavBar />
+        <MyContext.Provider value={{theme, setTheme}}>
+        <NavBar/>
           <Routes>
-            <Route path= "" element={<Homepage />}/>
-            <Route path= "/register" element={<Register />}/>
-            <Route path= "/login" element={<Login />}/>
-            <Route path= "/forgotpassword" element={<ForgotPassword />}/>
+            <Route path="" element={<Homepage />}/>
+            <Route path="/register" element={<Register />}/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/forgotpassword" element={<ForgotPassword />}/>
           </Routes>
           </MyContext.Provider>
       </Router>

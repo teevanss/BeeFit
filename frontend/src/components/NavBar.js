@@ -1,17 +1,34 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import { MyContext } from '../MyContext';
 import logo from "../images/logo.svg";
 
 export const NavBar = () => {
 
-  const {activeLink, setActiveLink} = useContext(MyContext);
+  const [activeLink, setActiveLink] = useState();
   const [scrolled, setScrolled] = useState(false);
   const {theme, setTheme} = useContext(MyContext);
 
-  // To change background color on NavBar
+  // To change button styling on NavBar to show active location
+  useEffect(() => {
+    const onClick = () => {
+      if (window.location.pathname === "/register") {
+        setActiveLink("register");
+      }
+      else if (window.location.pathname === "/login") {
+        setActiveLink("login");
+    }
+      else {
+        setActiveLink("home");
+      }
+    }
+    window.addEventListener("click", onClick);
+    return () => window.removeEventListener("click", onClick);
+  }, [])
+  
+  // To change background color for NavBar depending on scroll location
   useEffect(() => {
     const onScroll = () => {
       if (window.scrollY > 50) {
@@ -24,41 +41,34 @@ export const NavBar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [])
 
-  // Update Link
-  const onUpdateActiveLink = (value) => {
-    setActiveLink(value);
-  }
-
   // Update theme
   const onUpdateTheme = () => {
-    if (theme == "light") {
+    if (theme === "light") {
         setTheme("dark");
       } else {
         setTheme("light");
       }
   }
 
-  // To change the values in CSS files
+  // To change the values in CSS files 
   var store = document.querySelector(':root');
   var value = getComputedStyle(store);
 
-  if (theme == "light") {
+  if (theme === "light") {
     store.style.setProperty('--text-color', 'white');
     store.style.setProperty('--text-color2', 'black');
     store.style.setProperty('--bee-yellow', '#ffb313');
     store.style.setProperty('--input-box', 'rgb(255, 246, 189)');
     store.style.setProperty('--scroll-bar', '#582c08');
   }
-  else if (theme == "dark") {
+  else if (theme === "dark") {
     store.style.setProperty('--text-color', 'black');
     store.style.setProperty('--text-color2', 'white');
     store.style.setProperty('--bee-yellow', '#230999');
     store.style.setProperty('--input-box', 'rgb(208, 192, 252)');
     store.style.setProperty('--scroll-bar', '#090725');
   }
-
-  console.log(theme)
-
+  
   return (
   
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
@@ -72,7 +82,7 @@ export const NavBar = () => {
 
             <Navbar.Brand>
                 <Link to="/">
-                    <img className="logo" src={logo} alt="BeeFit logo" onClick={() => onUpdateActiveLink('home')}/>
+                    <img className="logo" src={logo} alt="BeeFit logo"/>
                 </Link>
             </Navbar.Brand>
 
@@ -81,12 +91,12 @@ export const NavBar = () => {
                         Theme
                     </div>
                 <Link to="/register">
-                    <div className={activeLink == 'register' ? 'active-button-nav' : 'button-nav'} onClick={() => onUpdateActiveLink('register')}>
+                    <div className={activeLink === 'register' ? 'active-button-nav' : 'button-nav'}>
                         Register
                     </div>
                 </Link>
                 <Link to="/login">
-                    <div className={activeLink == 'login' ? 'active-button-nav' : 'button-nav'} onClick={() => onUpdateActiveLink('login')}>
+                    <div className={activeLink === 'login' ? 'active-button-nav' : 'button-nav'}>
                         Login
                     </div>
                 </Link>
