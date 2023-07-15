@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cuddlecottage.beefit.Exception.EntityNotFoundException;
-import com.cuddlecottage.beefit.data.user;
+import com.cuddlecottage.beefit.models.User;
 import com.cuddlecottage.beefit.repository.UserRepository;
 
 @Service
@@ -15,19 +15,19 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<user> findAll(){
+    public List<User> findAll(){
         return userRepository.findAll();
     }
 
-    public user findById(int id){
+    public User findById(String id){
         return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
-    public user save(user user){
+    public User save(User user){
         return userRepository.save(user);
     }
 
-    public void deleteById(int id){
+    public void deleteById(String id){
         userRepository.deleteById(id);
     }
 

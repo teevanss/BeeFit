@@ -6,3 +6,5 @@ services:
       - MONGO_INIT_DATABASE=beefit-web
     ports:
       - 27017:27017
+      
+      
