@@ -1,7 +1,9 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useContext, useState } from 'react';
 import { MyContext } from '../MyContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from "../Axios.js";
 import '../css/register.css';
 import 'animate.css';
@@ -12,46 +14,114 @@ const REGISTER_URL = "/register";
 export const Register = () => {
 
     const {theme, setTheme} = useContext(MyContext);
+    const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
     const [psw, setPsw] = useState("");
+    const [pswRepeat, setPswRepeat] = useState("");
+    const [success, setSuccess] = useState("false");
 
-    //Handle register form
-    const handleSubmit = async (err) => {
-    err.preventDefault();
-    const user = "aaakkkk"
-    const usertype = "user"
-    
+    // Handle register form
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Error handling
+    if (psw != pswRepeat) {
+        toast.error("Your passwords do not match.", {
+            position: "top-left",
+            autoClose: 5000,
+            theme: "light",
+        });
+        return;
+    }
+    if (psw.length < 6) {
+        toast.error("Your password is too short.", {
+            position: "top-left",
+            autoClose: 5000,
+            theme: "light",
+        });
+        return;
+    }
+    if (psw.length > 40) {
+        toast.error("Your password is too long.", {
+            position: "top-left",
+            autoClose: 5000,
+            theme: "light",
+        });
+        return;
+    }
+    if (user.length < 3) {
+        toast.error("Your username too short.", {
+            position: "top-left",
+            autoClose: 5000,
+            theme: "light",
+        });
+        return;
+    }
+    if (user.length > 20) {
+        toast.error("Your username too long.", {
+            position: "top-left",
+            autoClose: 5000,
+            theme: "light",
+        });
+        return;
+    }
+
+    // Send POST request if all inputs meet the requirements
     try {
         const response = await axios.post(
         REGISTER_URL,
         {
-            username: "aaaaaaaaaaa",
-            email: "teevans@buffalo.edu",
-            password: "123456",
+            username: user,
+            email: email,
+            password: psw,
             roles: ["user"]
         },
         {
-
             headers: { 
                 "Content-Type": "application/json", 
                 "Access-Control-Allow-Origin": "http://localhost:3000"},
             withCredentials: false,
         }
         );
-        //setSuccess(true);
-        //Clear state and controlled inputs
-        //setUser("");
-        //setPwd("");
-        //setMatchPwd("");
+
+        // Clear state and controlled inputs
+        setUser("");
+        setEmail("");
+        setPsw("");
+        setPswRepeat("");
+
+        // Successful POST request
+        // Set success to true, so that we can redirect the user.
+        setSuccess("true");
+        toast.success("You have registered successfully!",  {
+            position: "top-left",
+            autoClose: 5000,
+            theme: "light",
+            });
+        
+    // More error handling, can only check after POST request (POST request failed)
     } catch (err) {
         if (!err?.response) {
-        //setErrMsg("No Server Response");
+            toast.error("No server response.", {
+                position: "top-left",
+                autoClose: 5000,
+                theme: "light",
+                });
         } else {
-        //setErrMsg("Registration Failed");
+            toast.error("Error registering. Username or email already taken.", {
+                position: "top-left",
+                autoClose: 5000,
+                theme: "light",
+                });
         }
-        //errRef.current.focus();
     }
     };
+
+    if (success == "true") {
+        return (
+            <Navigate to="/Login" />
+        )
+    }
     return ( 
 
         <section className="register" id={theme === 'light' ? 'register' : 'register-dark'}>
@@ -72,12 +142,13 @@ export const Register = () => {
                         <h1>R<a>e</a>gist<a>e</a>r</h1>
                         <h2>Ready to bee the best you?</h2>
 
+                        <input type="text" placeholder="Enter Username" name="user" value={user} onChange={(e) => setUser(e.target.value)} id="user" required></input><br></br>
                         <input type="text" placeholder="Enter Email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required></input><br></br>
                         <input type="password" placeholder="Enter Password" value={psw} onChange={(e) => setPsw(e.target.value)} name="psw" id="psw" required></input><br></br>
-                        <input type="password" placeholder="Confirm Password" name="psw-repeat" id="psw-repeat" required></input>
+                        <input type="password" placeholder="Confirm Password" value={pswRepeat} onChange={(e) => setPswRepeat(e.target.value)} name="psw-repeat" id="psw-repeat" required></input>
 
-                        <p>Password must be 8-20 characters long, and have at least one lower and uppercase letter and a number.</p>
-                        <button type="submit" className="registerbtn">Register</button>
+                        <p>Your username must be 3-20 characters long. <br></br> Your password must be 6-40 characters long.</p>
+                        <button type="submit" className="reg-button">Register</button>
                     </div>
 
                     <div className="sign-in">
@@ -94,6 +165,7 @@ export const Register = () => {
             </Col>
             
             </Row>
+            <ToastContainer />
         </Container>
         </section>
     )

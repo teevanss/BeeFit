@@ -13,7 +13,7 @@ export const UserHomepage = () => {
 
     return ( 
 
-        <section className="home" id={theme === 'light' ? 'home' : 'home-dark'}>
+        <section className="user-home" id={theme === 'light' ? 'user-home' : 'user-home-dark'}>
         <Container>
             <Row className="align-items-center">
 

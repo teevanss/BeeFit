@@ -38,7 +38,7 @@
     transition: 0.3s ease-in-out;
 }
 
-#home {
+#user-home {
     margin-top: 0;
     padding: 20% 0 30% 0;
     background-image: url('../images/background-house.png');
@@ -47,7 +47,7 @@
     background-repeat: no-repeat;
 }
 
-#home-dark {
+#user-home-dark {
     margin-top: 0;
     padding: 20% 0 30% 0;
     background-image: url('../images/background-house-night.png');
@@ -56,23 +56,23 @@
     background-repeat: no-repeat;
 }
 
-.home button svg {
+.user-home button svg {
     font-size: 25px;
     line-height: 1;
     margin-left: 10px;
     transition: 0.3s ease-in-out;
 }
 
-.home button {
+.user-home button {
     text-align: left;
     transition: 0.3s ease-in-out;
 }
 
-.home button:hover svg {
+.user-home button:hover svg {
     margin-left: 25px;
 }
 
-.home h1 {
+.user-home h1 {
     font-family: AgrandirWide, sans-serif;
     font-size: 65px;
     letter-spacing: 1px;
@@ -82,12 +82,12 @@
     transition: 0.3s ease-in-out;
 }
   
-.home a {
+.user-home a {
     color: var(--text-color2) !important;
     transition: 0.3s ease-in-out;
 }
 
-.home p {
+.user-home p {
     font-family: TelegrafReg, sans-serif;
     color: var(--text-color2);
     font-size: 20px;
@@ -97,7 +97,7 @@
     transition: 0.3s ease-in-out;
 }
 
-.home button {
+.user-home button {
     font-family: TelegrafReg, sans-serif;
     color: var(--text-color2);
     font-size: 20px;

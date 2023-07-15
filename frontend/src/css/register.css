@@ -148,19 +148,19 @@
 }
 
 /************ Register Button CSS ************/
-.register button:not(:disabled):hover {
+.reg-button:not(:disabled):hover {
     transform: scale(1.05);
 }
   
-  .register button:not(:disabled):hover:active {
+.reg-button:not(:disabled):hover:active {
     transform: scale(1.05) translateY(.125rem);
 }
   
-  .register button:focus {
+.reg-button:focus {
     outline: 0 solid transparent;
 }
   
-  .register button:focus:before {
+.reg-button:focus:before {
     content: "";
     left: calc(-1*.375rem);
     pointer-events: none;
@@ -170,19 +170,19 @@
     user-select: none;
 }
   
-  .register button:focus:not(:focus-visible) {
+.reg-button:focus:not(:focus-visible) {
     outline: 0 solid transparent;
 }
   
-  .register button:focus:not(:focus-visible):before {
+.reg-button:focus:not(:focus-visible):before {
     border-width: 0;
 }
   
-  .register button:not(:disabled):active {
+.reg-button:not(:disabled):active {
     transform: translateY(.125rem);
 }
   
-  .register button {
+.reg-button {
     display: flex;
     text-align: center;
     font-family: TelegrafBold, sans-serif;
