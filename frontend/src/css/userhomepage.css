@@ -1,0 +1,128 @@
+:root {
+    --text-color: white; 
+    --text-color2: black;
+    --bee-yellow: #ffb313;
+}
+
+/************ Fonts ************/
+@font-face {
+	font-family: 'TelegrafReg';
+	src: url('../fonts/PPTelegraf-Regular.otf');
+    font-weight: 700;
+    font-style: none;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'TelegrafLight';
+	src: url('../fonts/PPTelegraf-Ultralight.otf');
+    font-weight: 700;
+    font-style: none;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'AgrandirWide';
+	src: url('../fonts/Agrandir-WideBlackItalic.otf');
+    font-weight: 300;
+    font-style: none;
+    font-display: swap;
+}
+
+/************ Homepage CSS ************/
+.animate__fadeIn {
+    background-image: linear-gradient(to bottom right, var(--bee-yellow) 10%, #ffebc04a);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 1rem;
+    padding: 3rem;
+    transition: 0.3s ease-in-out;
+}
+
+#home {
+    margin-top: 0;
+    padding: 20% 0 30% 0;
+    background-image: url('../images/background-house.png');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#home-dark {
+    margin-top: 0;
+    padding: 20% 0 30% 0;
+    background-image: url('../images/background-house-night.png');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.home button svg {
+    font-size: 25px;
+    line-height: 1;
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.home button {
+    text-align: left;
+    transition: 0.3s ease-in-out;
+}
+
+.home button:hover svg {
+    margin-left: 25px;
+}
+
+.home h1 {
+    font-family: AgrandirWide, sans-serif;
+    font-size: 65px;
+    letter-spacing: 1px;
+    color: var(--text-color);
+    line-height: 1;
+    display: block;
+    transition: 0.3s ease-in-out;
+}
+  
+.home a {
+    color: var(--text-color2) !important;
+    transition: 0.3s ease-in-out;
+}
+
+.home p {
+    font-family: TelegrafReg, sans-serif;
+    color: var(--text-color2);
+    font-size: 20px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 100%;
+    transition: 0.3s ease-in-out;
+}
+
+.home button {
+    font-family: TelegrafReg, sans-serif;
+    color: var(--text-color2);
+    font-size: 20px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 100%;
+}
+
+/************ Images ************/
+.bee-excited {
+    width: 20%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    animation: updown 3s linear infinite;
+}
+
+@keyframes updown {
+    0% {
+        transform: translateY(-20px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}

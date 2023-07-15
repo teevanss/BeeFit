@@ -18,15 +18,24 @@ export const Register = () => {
     //Handle register form
     const handleSubmit = async (err) => {
     err.preventDefault();
+    const user = "aaakkkk"
+    const usertype = "user"
     
     try {
         const response = await axios.post(
-        JSON.stringify({ email, psw }),
+        REGISTER_URL,
+        {
+            username: "aaaaaaaaaaa",
+            email: "teevans@buffalo.edu",
+            password: "123456",
+            roles: ["user"]
+        },
         {
 
-            headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "http://localhost:3000"},
+            headers: { 
+                "Content-Type": "application/json", 
+                "Access-Control-Allow-Origin": "http://localhost:3000"},
             withCredentials: false,
-            mode: 'no-cors',
         }
         );
         //setSuccess(true);
