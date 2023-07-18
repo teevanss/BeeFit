@@ -2,9 +2,10 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import { useContext, useState } from 'react';
 import { MyContext } from '../MyContext';
-import { ToastContainer, toast } from 'react-toastify';
+import { Envelope, Person, Lock } from 'react-bootstrap-icons';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from "../Axios.js";
+import axios from "../AxiosRegister.js";
 import '../css/register.css';
 import 'animate.css';
 import BeeHappy from "../images/bee-happy.svg";
@@ -29,7 +30,7 @@ export const Register = () => {
         toast.error("Your passwords do not match.", {
             position: "top-left",
             autoClose: 5000,
-            theme: "light",
+            theme: theme,
         });
         return;
     }
@@ -37,7 +38,7 @@ export const Register = () => {
         toast.error("Your password is too short.", {
             position: "top-left",
             autoClose: 5000,
-            theme: "light",
+            theme: theme,
         });
         return;
     }
@@ -45,7 +46,7 @@ export const Register = () => {
         toast.error("Your password is too long.", {
             position: "top-left",
             autoClose: 5000,
-            theme: "light",
+            theme: theme,
         });
         return;
     }
@@ -53,7 +54,7 @@ export const Register = () => {
         toast.error("Your username too short.", {
             position: "top-left",
             autoClose: 5000,
-            theme: "light",
+            theme: theme,
         });
         return;
     }
@@ -61,7 +62,7 @@ export const Register = () => {
         toast.error("Your username too long.", {
             position: "top-left",
             autoClose: 5000,
-            theme: "light",
+            theme: theme,
         });
         return;
     }
@@ -93,25 +94,25 @@ export const Register = () => {
         // Successful POST request
         // Set success to true, so that we can redirect the user.
         setSuccess("true");
-        toast.success("You have registered successfully!",  {
+        toast.success("You have registered successfully! Welcome to BeeFit!",  {
             position: "top-left",
             autoClose: 5000,
-            theme: "light",
+            theme: theme,
             });
         
     // More error handling, can only check after POST request (POST request failed)
     } catch (err) {
         if (!err?.response) {
-            toast.error("No server response.", {
+            toast.error("No server response. We are so sorry!", {
                 position: "top-left",
                 autoClose: 5000,
-                theme: "light",
+                theme: theme,
                 });
         } else {
             toast.error("Error registering. Username or email already taken.", {
                 position: "top-left",
                 autoClose: 5000,
-                theme: "light",
+                theme: theme,
                 });
         }
     }
@@ -134,7 +135,6 @@ export const Register = () => {
                 </div>
             </Col>
 
-            {/* One full-width column, one 8/12 column, one half-width column */}
             <Col xs={14} md={8} xl={6}>
             <div className="animate__animated animate__fadeIn">
                 <form onSubmit={handleSubmit}>
@@ -142,10 +142,22 @@ export const Register = () => {
                         <h1>R<a>e</a>gist<a>e</a>r</h1>
                         <h2>Ready to bee the best you?</h2>
 
-                        <input type="text" placeholder="Enter Username" name="user" value={user} onChange={(e) => setUser(e.target.value)} id="user" required></input><br></br>
-                        <input type="text" placeholder="Enter Email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required></input><br></br>
+                        <div className="iconDiv">
+                            <Person size={24} color="#5d5d5d"/>
+                            <input type="text" placeholder="Enter Username" name="user" value={user} onChange={(e) => setUser(e.target.value)} id="user" required></input>
+                        </div>
+                        <div className="iconDiv">
+                            <Envelope size={20} color="#5d5d5d"/>
+                            <input type="text" placeholder="Enter Email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required></input><br></br>
+                        </div>
+                        <div className="iconDiv">
+                            <Lock size={22} color="#5d5d5d"/>
                         <input type="password" placeholder="Enter Password" value={psw} onChange={(e) => setPsw(e.target.value)} name="psw" id="psw" required></input><br></br>
+                        </div>
+                        <div className="iconDiv">
+                            <Lock size={22} color="#5d5d5d"/>
                         <input type="password" placeholder="Confirm Password" value={pswRepeat} onChange={(e) => setPswRepeat(e.target.value)} name="psw-repeat" id="psw-repeat" required></input>
+                        </div>
 
                         <p>Your username must be 3-20 characters long. <br></br> Your password must be 6-40 characters long.</p>
                         <button type="submit" className="reg-button">Register</button>
@@ -165,7 +177,6 @@ export const Register = () => {
             </Col>
             
             </Row>
-            <ToastContainer />
         </Container>
         </section>
     )

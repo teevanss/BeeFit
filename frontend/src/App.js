@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router, Route, Routes
 } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState, React } from "react";
 import { MyContext } from "./MyContext";
 import { NavBar } from './components/NavBar.js';
@@ -11,8 +13,6 @@ import { Register } from './components/Register.js';
 import { Login } from './components/Login.js';
 import { ForgotPassword } from './components/ForgotPassword.js';
 import { UserHomepage } from './components/UserHomepage.js';
-
-
 
 function App() {
 
@@ -33,6 +33,7 @@ function App() {
           </Routes>
           </MyContext.Provider>
       </Router>
+      <ToastContainer />
     </div>
   );
 }

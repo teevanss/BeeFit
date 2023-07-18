@@ -23,7 +23,6 @@ export const ForgotPassword = () => {
                 </div>
             </Col>
 
-            {/* One full-width column, one 8/12 column, one half-width column */}
             <Col xs={14} md={8} xl={6}>
             <div className="animate__animated animate__fadeIn">
                 <form action="action_page.php">

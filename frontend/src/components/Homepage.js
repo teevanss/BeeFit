@@ -27,7 +27,6 @@ export const Homepage = () => {
         <Container>
             <Row className="align-items-center">
 
-            {/* One full-width column, one 8/12 column, one half-width column */}
             <Col xs={14} md={8} xl={6}>
                 <div className="animate__animated animate__fadeIn">
                     <h1>Welcome to B<a>ee</a>Fit!</h1>

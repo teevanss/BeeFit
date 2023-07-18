@@ -109,28 +109,24 @@
 }
 
 .register input {
-    width: 100%;
-    border: none;
-    margin-top: 2rem;
-    border-radius: 0.5rem;
-    height: 3rem;
-}
-
-.register input {
     font-family: TelegrafReg, sans-serif;
     color: #5d5d5d;
     font-size: 18px;
-    padding-left: 15px;
+    padding-left: 40px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
     width: 100%;
+    border: none;
+    margin-top: 2rem;
+    padding-top: 3px;
+    border-radius: 0.5rem;
+    height: 3rem;
 }
 
 .register input:focus, textarea:focus {
     font-family: TelegrafReg, sans-serif;
     color: #5d5d5d;
     font-size: 18px;
-    padding-left: 15px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
     width: 100%;
@@ -141,10 +137,20 @@
     font-family: TelegrafReg, sans-serif;
     color: #5d5d5d;
     font-size: 18px;
-    padding-left: 5px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
     width: 100%;
+}
+
+.register svg {
+    position: absolute;
+    top: 70%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+  
+.iconDiv {
+    position: relative;
 }
 
 /************ Register Button CSS ************/
