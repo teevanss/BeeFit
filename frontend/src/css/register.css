@@ -142,15 +142,22 @@
     width: 100%;
 }
 
-.register svg {
+.iconDiv {
+    position: relative;
+}
+
+.icon {
     position: absolute;
     top: 70%;
     left: 10px;
     transform: translateY(-50%);
 }
-  
-.iconDiv {
-    position: relative;
+
+.eye {
+    position: absolute;
+    top: 70%;
+    right: 10px;
+    transform: translateY(-50%);
 }
 
 /************ Register Button CSS ************/

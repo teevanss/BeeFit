@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import { MyContext } from '../MyContext';
+import { Envelope } from 'react-bootstrap-icons';
 import '../css/forgotpassword.css';
 import 'animate.css';
 import BeeHappy from "../images/bee-happy.svg";
@@ -30,7 +31,10 @@ export const ForgotPassword = () => {
                         <h1>Reset Pass<a>word</a></h1>
                         <h2>Please enter the email associated with your account.</h2>
 
-                        <input type="text" placeholder="Enter Email" name="email" id="email" required></input><br></br>
+                        <div className="iconDiv">
+                            <Envelope size={20} color="#5d5d5d" className="icon2"/>
+                            <input type="text" placeholder="Enter Email" name="email" id="email" required></input><br></br>
+                        </div>
 
                         <button type="submit" className="submitbtn">Submit</button>
                     </div>

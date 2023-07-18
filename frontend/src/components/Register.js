@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import { useContext, useState } from 'react';
 import { MyContext } from '../MyContext';
-import { Envelope, Person, Lock } from 'react-bootstrap-icons';
+import { Envelope, Person, Key, EyeSlash, Eye } from 'react-bootstrap-icons';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "../AxiosRegister.js";
@@ -20,7 +20,17 @@ export const Register = () => {
     const [psw, setPsw] = useState("");
     const [pswRepeat, setPswRepeat] = useState("");
     const [success, setSuccess] = useState("false");
+    const [passwordVisibility, setPasswordVisibility] = useState("true");
 
+    // Change password visibility
+    let iconPassword;
+    if (passwordVisibility === "true") {
+        iconPassword = <EyeSlash size={24} color="#5d5d5d" className="eye" onClick= {() => {setPasswordVisibility("false");}}/>
+    }
+    else {
+        iconPassword = <Eye size={24} color="#5d5d5d" className="eye" onClick= {() => {setPasswordVisibility("true");}}/>
+    }
+ 
     // Handle register form
     const handleSubmit = async (e) => {
     e.preventDefault();
@@ -143,20 +153,22 @@ export const Register = () => {
                         <h2>Ready to bee the best you?</h2>
 
                         <div className="iconDiv">
-                            <Person size={24} color="#5d5d5d"/>
+                            <Person size={24} color="#5d5d5d" className="icon"/>
                             <input type="text" placeholder="Enter Username" name="user" value={user} onChange={(e) => setUser(e.target.value)} id="user" required></input>
                         </div>
                         <div className="iconDiv">
-                            <Envelope size={20} color="#5d5d5d"/>
+                            <Envelope size={20} color="#5d5d5d" className="icon"/>
                             <input type="text" placeholder="Enter Email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} id="email" required></input><br></br>
                         </div>
                         <div className="iconDiv">
-                            <Lock size={22} color="#5d5d5d"/>
-                        <input type="password" placeholder="Enter Password" value={psw} onChange={(e) => setPsw(e.target.value)} name="psw" id="psw" required></input><br></br>
+                            <Key size={24} color="#5d5d5d" className="icon"/>
+                            {iconPassword}
+                        <input type={passwordVisibility == 'true'? 'password' : 'text'} placeholder="Enter Password" value={psw} onChange={(e) => setPsw(e.target.value)} name="psw" id="psw" required></input><br></br>
                         </div>
                         <div className="iconDiv">
-                            <Lock size={22} color="#5d5d5d"/>
-                        <input type="password" placeholder="Confirm Password" value={pswRepeat} onChange={(e) => setPswRepeat(e.target.value)} name="psw-repeat" id="psw-repeat" required></input>
+                            <Key size={24} color="#5d5d5d" className="icon"/>
+                            {iconPassword}
+                        <input type={passwordVisibility == 'true'? 'password' : 'text'} placeholder="Confirm Password" value={pswRepeat} onChange={(e) => setPswRepeat(e.target.value)} name="psw-repeat" id="psw-repeat" required></input>
                         </div>
 
                         <p>Your username must be 3-20 characters long. <br></br> Your password must be 6-40 characters long.</p>

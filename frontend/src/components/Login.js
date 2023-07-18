@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import { useContext, useState } from 'react';
 import { MyContext } from '../MyContext';
-import { Person, Lock } from 'react-bootstrap-icons';
+import { Person, Key, Eye, EyeSlash } from 'react-bootstrap-icons';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "../AxiosLogin.js";
@@ -17,6 +17,16 @@ export const Login = () => {
     const [user, setUser] = useState("");
     const [psw, setPsw] = useState("");
     const [success, setSuccess] = useState("false");
+    const [passwordVisibility, setPasswordVisibility] = useState("true");
+
+    // Change password visibility
+    let iconPassword;
+    if (passwordVisibility === "true") {
+        iconPassword = <EyeSlash size={24} color="#5d5d5d" className="eye" onClick= {() => {setPasswordVisibility("false");}}/>
+    }
+    else {
+        iconPassword = <Eye size={24} color="#5d5d5d" className="eye" onClick= {() => {setPasswordVisibility("true");}}/>
+    }
 
     // Handle login form
     const handleSubmit = async (e) => {
@@ -95,12 +105,13 @@ export const Login = () => {
                         <h2>Bee-lieve in yourself!</h2>
 
                         <div className="iconDiv">
-                            <Person size={24} color="#5d5d5d"/>
+                            <Person size={24} color="#5d5d5d" className="icon"/>
                             <input type="text" placeholder="Enter Email" name="uname" value={user} onChange={(e) => setUser(e.target.value)} id="user" required className="text"></input>
                         </div>
                         <div className="iconDiv">
-                            <Lock size={22} color="#5d5d5d"/>
-                            <input type="password" placeholder="Enter Password" value={psw} onChange={(e) => setPsw(e.target.value)} name="psw" id="psw" required className="text"></input>
+                            <Key size={24} color="#5d5d5d" className="icon"/>
+                            {iconPassword}
+                            <input type={passwordVisibility == 'true'? 'password' : 'text'} placeholder="Enter Password" value={psw} onChange={(e) => setPsw(e.target.value)} name="psw" id="psw" required className="text"></input>
                         </div>
 
                         <Link to="/forgotpassword"><p><a>Forgot password?</a></p></Link>
