@@ -90,8 +90,9 @@ export const Register = () => {
         {
             headers: { 
                 "Content-Type": "application/json", 
-                "Access-Control-Allow-Origin": "http://localhost:3000"},
-            withCredentials: false,
+                "Access-Control-Allow-Origin": "http://localhost:3000",
+                "Access-Control-Allow-Credentials": "true"},
+            withCredentials: true,
         }
         );
 
@@ -130,7 +131,7 @@ export const Register = () => {
 
     if (success == "true") {
         return (
-            <Navigate to="/Login" />
+            <Navigate to="/login" />
         )
     }
     return ( 

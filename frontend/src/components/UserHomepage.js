@@ -2,17 +2,75 @@ import { Container, Row, Modal, Button } from "react-bootstrap";
 import { Pencil } from 'react-bootstrap-icons';
 import { useContext, useState } from 'react';
 import { MyContext } from '../MyContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "../AxiosCheckin";
 import '../css/userhomepage.css';
 import 'animate.css';
 import BeeExcited from "../images/bee-excited.svg";
+const USERHOMEPAGE_URL = "/userhomepage";
 
 export const UserHomepage = () => {
 
     const {theme, setTheme} = useContext(MyContext);
     const [show, setShow] = useState(false);
+    const [weight, setWeight] = useState("");
+    const [success, setSuccess] = useState("false");
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    // Handle login form
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        // Send POST request
+        try {
+            const response = await axios.post(
+            USERHOMEPAGE_URL,
+            {
+                //id:
+                //username:
+                weight: weight,
+                //date:
+            },
+            {
+                headers: { 
+                    "Content-Type": "application/json", 
+                    "Access-Control-Allow-Origin": "http://localhost:3000"},
+                withCredentials: false,
+            }
+            );
+    
+            // Clear state and controlled inputs
+            setWeight("");
+    
+            // Successful POST request
+            // Set success to true, so that we can redirect the user.
+            setSuccess("true");
+            toast.success("You have logged in successfully! We are so happy to see you!",  {
+                position: "top-left",
+                autoClose: 5000,
+                theme: theme,
+                });
+            
+        // Error handling, can only check after POST request (POST request failed)
+        } catch (err) {
+            if (!err?.response) {
+                toast.error("No server response. We are so sorry!", {
+                    position: "top-left",
+                    autoClose: 5000,
+                    theme: theme,
+                    });
+            } else {
+                toast.error("Error logging in. Invalid username or password.", {
+                    position: "top-left",
+                    autoClose: 5000,
+                    theme: theme,
+                    });
+            }
+        }
+        };
 
     return ( 
 
@@ -40,7 +98,7 @@ export const UserHomepage = () => {
 
                         <div className="iconDiv">
                             <Pencil size={24} color="#5d5d5d" className="icon3"/>
-                            <input type="number" placeholder="Enter Weight" name="uname" required className="textBox"></input>
+                            <input type="number" placeholder="Enter Weight" name="uweight" value={weight} onChange={(e) => setWeight(e.target.value)} id="weight" required className="textBox"></input>
                         </div>
 
                     </div>

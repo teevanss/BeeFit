@@ -96,14 +96,25 @@
     left: 10px;
     transform: translateY(-50%);
 }
+
 /************ Popup Checkin ************/
+.modal {
+    --bs-modal-width: 50% !important;
+}
+
 .modal-content {
     background-color: var(--bee-yellow) !important;
     display: grid !important;
 }
 
+.modal-open {
+    overflow-y: scroll !important;
+    padding-right: 0 !important;
+}
+
 .modal-header {
     border-bottom: none !important;
+    display: contents !important;
 }
 
 .footerDiv {
@@ -117,6 +128,7 @@
     right: 1rem;
     top: 1rem;
 }
+
 .textBox {
     width: 100%;
     border: none;
