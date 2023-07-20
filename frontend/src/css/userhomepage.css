@@ -29,15 +29,7 @@
     font-display: swap;
 }
 
-/************ Homepage CSS ************/
-.animate__fadeIn {
-    background-image: linear-gradient(to bottom right, var(--bee-yellow) 10%, #ffebc04a);
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 1rem;
-    padding: 3rem;
-    transition: 0.3s ease-in-out;
-}
-
+/************ User Homepage CSS ************/
 #user-home {
     margin-top: 0;
     padding: 20% 0 30% 0;
@@ -56,23 +48,8 @@
     background-repeat: no-repeat;
 }
 
-.user-home button svg {
-    font-size: 25px;
-    line-height: 1;
-    margin-left: 10px;
-    transition: 0.3s ease-in-out;
-}
-
-.user-home button {
-    text-align: left;
-    transition: 0.3s ease-in-out;
-}
-
-.user-home button:hover svg {
-    margin-left: 25px;
-}
-
-.user-home h1 {
+.user-home-container h1 {
+    text-align: center;
     font-family: AgrandirWide, sans-serif;
     font-size: 65px;
     letter-spacing: 1px;
@@ -81,15 +58,27 @@
     display: block;
     transition: 0.3s ease-in-out;
 }
-  
-.user-home a {
+
+.user-home-container h2 {
+    color: var(--text-color2) !important;
+    font-family: TelegrafBold, sans-serif;
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 100%;
+    transition: 0.3s ease-in-out;
+}
+
+.user-home-container a {
     color: var(--text-color2) !important;
     transition: 0.3s ease-in-out;
 }
 
-.user-home p {
+.user-home-container p {
     font-family: TelegrafReg, sans-serif;
     color: var(--text-color2);
+    margin-top: 2rem;
     font-size: 20px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
@@ -97,10 +86,66 @@
     transition: 0.3s ease-in-out;
 }
 
-.user-home button {
+.user-home-container b {
+    font-family: TelegrafBold, sans-serif;
+}
+
+.icon3 {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+/************ Popup Checkin ************/
+.modal-content {
+    background-color: var(--bee-yellow) !important;
+    display: grid !important;
+}
+
+.modal-header {
+    border-bottom: none !important;
+}
+
+.footerDiv {
+    display: grid;
+    height: 150px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.btn-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+.textBox {
+    width: 100%;
+    border: none;
+    border-radius: 0.5rem;
+    height: 3rem;
     font-family: TelegrafReg, sans-serif;
-    color: var(--text-color2);
-    font-size: 20px;
+    color: #5d5d5d;
+    font-size: 18px;
+    padding-left: 40px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    padding-top: 3px;
+    width: 100%;
+}
+
+.textBox:focus, textarea:focus {
+    font-family: TelegrafReg, sans-serif;
+    color: #5d5d5d;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 100%;
+    background-color: var(--input-box);
+}
+
+.textBox::placeholder {
+    font-family: TelegrafReg, sans-serif;
+    color: #5d5d5d;
+    font-size: 18px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
     width: 100%;
@@ -125,4 +170,69 @@
     100% {
         transform: translateY(-20px);
     }
+}
+
+/************ Popup Button CSS ************/
+.submit-button:not(:disabled):hover {
+    transform: scale(1.05);
+}
+  
+.submit-button:not(:disabled):hover:active {
+    transform: scale(1.05) translateY(.125rem);
+}
+  
+.submit-button:focus {
+    outline: 0 solid transparent;
+}
+  
+.submit-button:focus:before {
+    content: "";
+    left: calc(-1*.375rem);
+    pointer-events: none;
+    position: absolute;
+    top: calc(-1*.375rem);
+    transition: border-radius;
+    user-select: none;
+}
+  
+.submit-button:focus:not(:focus-visible) {
+    outline: 0 solid transparent;
+}
+  
+.submit-button:focus:not(:focus-visible):before {
+    border-width: 0;
+}
+  
+.submit-button:not(:disabled):active {
+    transform: translateY(.125rem);
+}
+  
+.submit-button {
+    display: flex;
+    text-align: center;
+    font-family: TelegrafBold, sans-serif;
+    margin: auto;
+    padding: 17px 40px 14px;
+    border: 1px solid rgb(255, 255, 255);
+    flex-basis: 150px;
+    flex-grow: 1;
+    color: black;
+    background-color: #ffffff;
+    backface-visibility: hidden;
+    border-radius: 0.375rem;
+    border-style: solid;
+    border-width: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    line-height: 1.3;
+    position: relative;
+    text-align: center;
+    transform: translateZ(0) scale(1);
+    transition: transform .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }

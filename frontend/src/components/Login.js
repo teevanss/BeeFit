@@ -106,7 +106,7 @@ export const Login = () => {
 
                         <div className="iconDiv">
                             <Person size={24} color="#5d5d5d" className="icon"/>
-                            <input type="text" placeholder="Enter Email" name="uname" value={user} onChange={(e) => setUser(e.target.value)} id="user" required className="text"></input>
+                            <input type="text" placeholder="Enter Username" name="uname" value={user} onChange={(e) => setUser(e.target.value)} id="user" required className="text"></input>
                         </div>
                         <div className="iconDiv">
                             <Key size={24} color="#5d5d5d" className="icon"/>
