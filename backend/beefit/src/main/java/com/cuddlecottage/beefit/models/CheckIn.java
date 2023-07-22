@@ -1,4 +1,4 @@
-package com.cuddlecottage.beefit.data;
+package com.cuddlecottage.beefit.models;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
@@ -9,10 +9,10 @@ public class CheckIn {
     @Id
     private BigInteger id;
     private String username;
-    private int weight;
+    private double weight;
     private LocalDateTime date;
 
-    public CheckIn(String username, int weight){
+    public CheckIn(String username, double weight){
         this.username = username;
         this.weight = weight;
         this.date = LocalDateTime.now();
@@ -23,7 +23,7 @@ public class CheckIn {
     public String getUsername(){
         return username;
     }
-    public int getWeight(){
+    public double getWeight(){
         return weight;
     }
     public LocalDateTime getDate(){

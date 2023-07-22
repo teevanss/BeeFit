@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.cuddlecottage.beefit.data.CheckIn;
+import com.cuddlecottage.beefit.models.CheckIn;
 import com.cuddlecottage.beefit.service.CheckInService;
 import org.springframework.web.bind.annotation.*;
 

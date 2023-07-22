@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cuddlecottage.beefit.Exception.EntityNotFoundException;
-import com.cuddlecottage.beefit.data.CheckIn;
+import com.cuddlecottage.beefit.models.CheckIn;
 import com.cuddlecottage.beefit.repository.CheckInRepository;
 
 @Service
