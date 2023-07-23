@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cuddlecottage.beefit.models.CheckIn;
 import com.cuddlecottage.beefit.service.CheckInService;
+
+import io.micrometer.common.util.StringUtils;
+
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,8 +20,13 @@ public class CheckInController {
     private CheckInService checkinService;
 
     @GetMapping
-    public List<CheckIn> findAll(){
-        return checkinService.findAll();
+    public List<CheckIn> findAll(@RequestParam(required = false) String username){
+        if(username == null || StringUtils.isEmpty(username)){
+            return checkinService.findAll();
+        }
+        else{
+            return checkinService.findCheckinsByUser(username);
+        }
     }
 
     @GetMapping("/{id}")

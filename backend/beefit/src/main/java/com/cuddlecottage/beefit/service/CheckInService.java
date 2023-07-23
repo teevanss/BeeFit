@@ -30,4 +30,8 @@ public class CheckInService {
     public void deleteById(BigInteger id){
         checkinRepository.deleteById(id);
     }
+
+    public List<CheckIn> findCheckinsByUser(String username){
+        return checkinRepository.findCheckinsByUsername(username);
+    }
 }
