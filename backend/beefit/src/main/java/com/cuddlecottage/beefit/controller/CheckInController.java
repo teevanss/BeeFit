@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/checkin/{id}")
+@RequestMapping("/api/checkin")
 public class CheckInController {
     @Autowired
     private CheckInService checkinService;
