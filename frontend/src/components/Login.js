@@ -44,10 +44,13 @@ export const Login = () => {
             headers: { 
                 "Content-Type": "application/json", 
                 "Access-Control-Allow-Origin": "http://localhost:3000",
-                "Access-Control-Allow-Credentials": "true"},
+                "Access-Control-Allow-Credentials": true},
             withCredentials: true,
         }
-        );
+        )
+
+        // Store user
+        localStorage.setItem("user", JSON.stringify(response.data));
 
         // Clear state and controlled inputs
         setUser("");
@@ -81,8 +84,14 @@ export const Login = () => {
     };
 
     if (success == "true") {
+
+        const id =  JSON.parse(localStorage.getItem("user"));
+        
+        let [key, value] = Object.entries(id)[1];
+        let userId = value;
+
         return (
-            <Navigate to="/userhomepage" />
+            <Navigate to={`/home/${userId}`} />
         )
     }
     return ( 
