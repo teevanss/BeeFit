@@ -2,14 +2,17 @@ import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
-import { MyContext } from '../MyContext';
+import { ThemeContext } from '../ThemeContext';
+import { LoginContext } from '../LoginContext';
+import 'react-toastify/dist/ReactToastify.css';
 import logo from "../images/logo.svg";
 
 export const NavBar = () => {
 
   const [activeLink, setActiveLink] = useState();
   const [scrolled, setScrolled] = useState(false);
-  const {theme, setTheme} = useContext(MyContext);
+  const {theme, setTheme} = useContext(ThemeContext);
+  const {loggedIn, setLoggedIn} = useContext(LoginContext);
 
   // To change button styling on NavBar to show active location
   useEffect(() => {
@@ -19,7 +22,10 @@ export const NavBar = () => {
       }
       else if (window.location.pathname === "/login") {
         setActiveLink("login");
-    }
+      }
+      else if (window.location.pathname === "/settings") {
+        setActiveLink("settings");
+      }
       else {
         setActiveLink("home");
       }
@@ -50,6 +56,12 @@ export const NavBar = () => {
       }
   }
 
+  // Change navbar buttons depending on if user is logged in or not
+  const onLogout = () => {
+    localStorage.removeItem("user")
+    setLoggedIn("false");
+  }
+
   // To change the values in CSS files 
   var store = document.querySelector(':root');
   var value = getComputedStyle(store);
@@ -68,7 +80,46 @@ export const NavBar = () => {
     store.style.setProperty('--input-box', 'rgb(208, 192, 252)');
     store.style.setProperty('--scroll-bar', '#090725');
   }
-  
+
+  if (loggedIn === true){
+    return (
+      <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
+        <Container>
+
+          <Navbar.Toggle aria-controls="basic-navbar-nav">
+            <span className="navbar-toggler-icon"></span>
+          </Navbar.Toggle>
+
+          <Navbar.Collapse id="basic-navbar-nav">
+
+            <Navbar.Brand>
+                <Link to="/">
+                    <img className="logo" src={logo} alt="BeeFit logo"/>
+                </Link>
+            </Navbar.Brand>
+
+            <Nav className="ms-auto">
+                  <div className="button-nav" onClick={() => onUpdateTheme()}>
+                      Theme
+                  </div>
+                <Link to="/settings">
+                  <div className={activeLink === 'settings' ? 'active-button-nav' : 'button-nav'}>
+                      Settings
+                  </div>
+                </Link>
+                <Link to="/">
+                  <div className='button-nav' onClick={() => onLogout()}>
+                      Logout
+                  </div>
+                </Link> 
+            </Nav>
+
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    )
+  }
+  // User not logged in
   return (
   
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
@@ -96,10 +147,10 @@ export const NavBar = () => {
                     </div>
                 </Link>
                 <Link to="/login">
-                    <div className={activeLink === 'login' ? 'active-button-nav' : 'button-nav'}>
-                        Login
-                    </div>
-                </Link>
+                  <div className={activeLink === 'login' ? 'active-button-nav' : 'button-nav'}>
+                      Login
+                  </div>
+                </Link> 
             </Nav>
 
           </Navbar.Collapse>

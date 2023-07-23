@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import { useContext, useState } from 'react';
-import { MyContext } from '../MyContext';
+import { ThemeContext } from '../ThemeContext';
 import { Envelope, Person, Key, EyeSlash, Eye } from 'react-bootstrap-icons';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +14,7 @@ const REGISTER_URL = "api/auth/signup";
 
 export const Register = () => {
 
-    const {theme, setTheme} = useContext(MyContext);
+    const {theme, setTheme} = useContext(ThemeContext);
     const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
     const [psw, setPsw] = useState("");
@@ -36,7 +36,7 @@ export const Register = () => {
     e.preventDefault();
 
     // Error handling
-    if (psw != pswRepeat) {
+    if (psw !== pswRepeat) {
         toast.error("Your passwords do not match.", {
             position: "top-left",
             autoClose: 5000,
@@ -129,7 +129,7 @@ export const Register = () => {
     }
     };
 
-    if (success == "true") {
+    if (success === "true") {
         return (
             <Navigate to="/login" />
         )
@@ -164,12 +164,12 @@ export const Register = () => {
                         <div className="iconDiv">
                             <Key size={24} color="#5d5d5d" className="icon"/>
                             {iconPassword}
-                        <input type={passwordVisibility == 'true'? 'password' : 'text'} placeholder="Enter Password" value={psw} onChange={(e) => setPsw(e.target.value)} name="psw" id="psw" required></input><br></br>
+                        <input type={passwordVisibility === 'true'? 'password' : 'text'} placeholder="Enter Password" value={psw} onChange={(e) => setPsw(e.target.value)} name="psw" id="psw" required></input><br></br>
                         </div>
                         <div className="iconDiv">
                             <Key size={24} color="#5d5d5d" className="icon"/>
                             {iconPassword}
-                        <input type={passwordVisibility == 'true'? 'password' : 'text'} placeholder="Confirm Password" value={pswRepeat} onChange={(e) => setPswRepeat(e.target.value)} name="psw-repeat" id="psw-repeat" required></input>
+                        <input type={passwordVisibility === 'true'? 'password' : 'text'} placeholder="Confirm Password" value={pswRepeat} onChange={(e) => setPswRepeat(e.target.value)} name="psw-repeat" id="psw-repeat" required></input>
                         </div>
 
                         <p>Your username must be 3-20 characters long. <br></br> Your password must be 6-40 characters long.</p>

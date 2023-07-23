@@ -248,3 +248,41 @@
     -webkit-user-select: none;
     touch-action: manipulation;
 }
+
+/************ Sidebar CSS ************/
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    min-height: 100vh !important;
+    z-index: 50;
+    padding-top: 8rem;
+}
+
+#sidebar-wrapper{
+    min-height: 100vh !important;
+    width: 100vw;
+    margin-left: -1rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+}
+
+.bg-transparent {
+    --bs-bg-opacity: 1;
+    background-color: #74191b !important;
+    border-image: linear-gradient(to bottom, #c05230, #d86a2d) 30;
+    border-right: 1rem solid;
+}

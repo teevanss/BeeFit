@@ -6,7 +6,8 @@ import {
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState, React } from "react";
-import { MyContext } from "./MyContext";
+import { ThemeContext } from "./ThemeContext";
+import { LoginContext } from "./LoginContext";
 import { NavBar } from './components/NavBar.js';
 import { Homepage } from './components/Homepage.js';
 import { Register } from './components/Register.js';
@@ -18,11 +19,14 @@ function App() {
 
   // Theme is light by default
   const [theme, setTheme] = useState("light");
+  // False by default
+  const [loggedIn, setLoggedIn] = useState("false");
 
   return (
     <div className="App">
       <Router>
-        <MyContext.Provider value={{theme, setTheme}}>
+        <ThemeContext.Provider value={{theme, setTheme}}>
+        <LoginContext.Provider value={{loggedIn, setLoggedIn}}>
         <NavBar/>
           <Routes>
             <Route path="" element={<Homepage />}/>
@@ -31,7 +35,8 @@ function App() {
             <Route path="/forgotpassword" element={<ForgotPassword />}/>
             <Route path="/home/:id" element={<UserHomepage />}/>
           </Routes>
-          </MyContext.Provider>
+          </LoginContext.Provider>
+          </ThemeContext.Provider>
       </Router>
       <ToastContainer />
     </div>

@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
-import { MyContext } from '../MyContext';
+import { ThemeContext } from '../ThemeContext';
 import { Envelope } from 'react-bootstrap-icons';
 import '../css/forgotpassword.css';
 import 'animate.css';
@@ -10,7 +10,7 @@ import BeeHoney from "../images/bee-honey.svg";
 
 export const ForgotPassword = () => {
 
-    const {theme, setTheme} = useContext(MyContext);
+    const {theme, setTheme} = useContext(ThemeContext);
 
     return ( 
 

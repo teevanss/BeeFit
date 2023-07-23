@@ -2,7 +2,7 @@ import { ArrowRightCircle } from 'react-bootstrap-icons';
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
-import { MyContext } from '../MyContext';
+import { ThemeContext } from '../ThemeContext';
 import '../css/homepage.css';
 import 'animate.css';
 import BeeFlower from "../images/bee-flower.svg";
@@ -10,7 +10,7 @@ import BeeFlowerDark from "../images/bee-dark.svg";
 
 export const Homepage = () => {
 
-    const {theme, setTheme} = useContext(MyContext);
+    const {theme, setTheme} = useContext(ThemeContext);
 
     // Display image based off current theme 
     let beeImage;

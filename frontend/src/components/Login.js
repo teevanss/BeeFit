@@ -1,7 +1,8 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import { useContext, useState } from 'react';
-import { MyContext } from '../MyContext';
+import { ThemeContext } from '../ThemeContext';
+import { LoginContext } from '../LoginContext';
 import { Person, Key, Eye, EyeSlash } from 'react-bootstrap-icons';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,7 +14,8 @@ const LOGIN_URL = "/api/auth/signin";
 
 export const Login = () => {
 
-    const {theme, setTheme} = useContext(MyContext);
+    const {theme, setTheme} = useContext(ThemeContext);
+    const {loggedIn, setLoggedIn} = useContext(LoginContext);
     const [user, setUser] = useState("");
     const [psw, setPsw] = useState("");
     const [success, setSuccess] = useState("false");
@@ -51,6 +53,7 @@ export const Login = () => {
 
         // Store user
         localStorage.setItem("user", JSON.stringify(response.data));
+        setLoggedIn(true);
 
         // Clear state and controlled inputs
         setUser("");
@@ -83,7 +86,7 @@ export const Login = () => {
     }
     };
 
-    if (success == "true") {
+    if (success === "true") {
 
         const id =  JSON.parse(localStorage.getItem("user"));
         
@@ -121,7 +124,7 @@ export const Login = () => {
                         <div className="iconDiv">
                             <Key size={24} color="#5d5d5d" className="icon"/>
                             {iconPassword}
-                            <input type={passwordVisibility == 'true'? 'password' : 'text'} placeholder="Enter Password" value={psw} onChange={(e) => setPsw(e.target.value)} name="psw" id="psw" required className="text"></input>
+                            <input type={passwordVisibility === 'true'? 'password' : 'text'} placeholder="Enter Password" value={psw} onChange={(e) => setPsw(e.target.value)} name="psw" id="psw" required className="text"></input>
                         </div>
 
                         <Link to="/forgotpassword"><p><a>Forgot password?</a></p></Link>
