@@ -13,7 +13,7 @@ import io.micrometer.common.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true", maxAge = 3600)
 @RequestMapping("/api/checkin")
 public class CheckInController {
     @Autowired

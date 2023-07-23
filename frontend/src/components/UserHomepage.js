@@ -4,18 +4,17 @@ import { useContext, useState } from 'react';
 import { MyContext } from '../MyContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from "../AxiosCheckin";
+import axios from "../Axios";
 import '../css/userhomepage.css';
 import 'animate.css';
 import BeeExcited from "../images/bee-excited.svg";
-const USERHOMEPAGE_URL = "/home/:id";
+const USERHOMEPAGE_URL = "/api/checkin";
 
 export const UserHomepage = () => {
 
     const {theme, setTheme} = useContext(MyContext);
     const [show, setShow] = useState(false);
     const [weight, setWeight] = useState("");
-    const [user, setUser] = useState("");
     const [success, setSuccess] = useState("false");
 
     const handleClose = () => setShow(false);
@@ -24,14 +23,27 @@ export const UserHomepage = () => {
     // Handle check-in submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setUser(JSON.parse(localStorage.getItem("user")));
+
+        if (weight == "") {
+            toast.error("Please enter your weight.", {
+                position: "top-left",
+                autoClose: 5000,
+                theme: theme,
+            });
+            return;
+        }
+
+        const id =  JSON.parse(localStorage.getItem("user"));
+        
+        let [key, value] = Object.entries(id)[1];
+        let userId = value;
     
         // Send POST request
         try {
             const response = await axios.post(
             USERHOMEPAGE_URL,
             {
-                username: user,
+                username: userId,
                 weight: weight,
             },
             {
@@ -45,16 +57,18 @@ export const UserHomepage = () => {
     
             // Clear state and controlled inputs
             setWeight("");
-            setUser("");
+            userId = "";
     
             // Successful POST request
-            // Set success to true, so that we can redirect the user.
             setSuccess("true");
-            toast.success("You have logged in successfully! We are so happy to see you!",  {
+            toast.success("Thanks for checking in! Keep it up!",  {
                 position: "top-left",
                 autoClose: 5000,
                 theme: theme,
                 });
+            
+            // Close modal
+            handleClose();
             
         // Error handling, can only check after POST request (POST request failed)
         } catch (err) {
@@ -65,7 +79,7 @@ export const UserHomepage = () => {
                     theme: theme,
                     });
             } else {
-                toast.error("Error logging in. Invalid username or password.", {
+                toast.error("Error checking in.", {
                     position: "top-left",
                     autoClose: 5000,
                     theme: theme,

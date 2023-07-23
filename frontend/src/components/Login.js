@@ -5,11 +5,11 @@ import { MyContext } from '../MyContext';
 import { Person, Key, Eye, EyeSlash } from 'react-bootstrap-icons';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from "../AxiosLogin.js";
+import axios from "../Axios.js";
 import '../css/login.css';
 import 'animate.css';
 import BeeStick from "../images/bee-stick.svg";
-const LOGIN_URL = "/login";
+const LOGIN_URL = "/api/auth/signin";
 
 export const Login = () => {
 

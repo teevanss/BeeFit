@@ -5,12 +5,12 @@ import { MyContext } from '../MyContext';
 import { Envelope, Person, Key, EyeSlash, Eye } from 'react-bootstrap-icons';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from "../AxiosRegister.js";
+import axios from "../Axios.js";
 import '../css/register.css';
 import 'animate.css';
 import BeeHappy from "../images/bee-happy.svg";
 import BeeHoney from "../images/bee-honey.svg";
-const REGISTER_URL = "/register";
+const REGISTER_URL = "api/auth/signup";
 
 export const Register = () => {
 
