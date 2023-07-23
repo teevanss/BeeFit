@@ -8,42 +8,44 @@ import axios from "../AxiosCheckin";
 import '../css/userhomepage.css';
 import 'animate.css';
 import BeeExcited from "../images/bee-excited.svg";
-const USERHOMEPAGE_URL = "/userhomepage";
+const USERHOMEPAGE_URL = "/home/:id";
 
 export const UserHomepage = () => {
 
     const {theme, setTheme} = useContext(MyContext);
     const [show, setShow] = useState(false);
     const [weight, setWeight] = useState("");
+    const [user, setUser] = useState("");
     const [success, setSuccess] = useState("false");
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // Handle login form
+    // Handle check-in submission
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setUser(JSON.parse(localStorage.getItem("user")));
     
         // Send POST request
         try {
             const response = await axios.post(
             USERHOMEPAGE_URL,
             {
-                //id:
-                //username:
+                username: user,
                 weight: weight,
-                //date:
             },
             {
                 headers: { 
                     "Content-Type": "application/json", 
-                    "Access-Control-Allow-Origin": "http://localhost:3000"},
-                withCredentials: false,
+                    "Access-Control-Allow-Origin": "http://localhost:3000",
+                    "Access-Control-Allow-Credentials": true},
+                withCredentials: true,
             }
             );
     
             // Clear state and controlled inputs
             setWeight("");
+            setUser("");
     
             // Successful POST request
             // Set success to true, so that we can redirect the user.
@@ -105,7 +107,7 @@ export const UserHomepage = () => {
                 </form>
 
                 <div className="footerDiv">
-                    <button type="submit" className="submit-button" onClick={handleClose} style={{color: 'black' }}>Submit &#10004;</button>
+                    <button type="submit" className="submit-button" onClick={handleSubmit} style={{color: 'black' }}>Submit &#10004;</button>
                     <button type="cancel" className="submit-button" onClick={handleClose} style={{color: 'black', backgroundColor: "transparent"}}>Cancel &#10006;</button>
                 </div>
         </Modal>

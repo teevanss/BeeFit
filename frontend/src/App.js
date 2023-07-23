@@ -18,7 +18,7 @@ function App() {
 
   // Theme is light by default
   const [theme, setTheme] = useState("light");
-  
+
   return (
     <div className="App">
       <Router>
@@ -29,7 +29,7 @@ function App() {
             <Route path="/register" element={<Register />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/forgotpassword" element={<ForgotPassword />}/>
-            <Route path="/userhomepage" element={<UserHomepage />}/>
+            <Route path="/home/:id" element={<UserHomepage />}/>
           </Routes>
           </MyContext.Provider>
       </Router>
