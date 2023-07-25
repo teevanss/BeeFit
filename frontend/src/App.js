@@ -14,13 +14,14 @@ import { Register } from './components/Register.js';
 import { Login } from './components/Login.js';
 import { ForgotPassword } from './components/ForgotPassword.js';
 import { UserHomepage } from './components/UserHomepage.js';
+import { Stats } from './components/Stats.js';
 
 function App() {
 
   // Theme is light by default
   const [theme, setTheme] = useState("light");
   // False by default
-  const [loggedIn, setLoggedIn] = useState("false");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div className="App">
@@ -34,6 +35,7 @@ function App() {
             <Route path="/login" element={<Login />}/>
             <Route path="/forgotpassword" element={<ForgotPassword />}/>
             <Route path="/home/:id" element={<UserHomepage />}/>
+            <Route path="/stats/:id" element={<Stats />}/>
           </Routes>
           </LoginContext.Provider>
           </ThemeContext.Provider>

@@ -108,8 +108,25 @@ nav.navbar.scrolled {
   box-shadow: rgba(0, 0, 0, 0.286) 0px 7px 29px 0px;
 }
 
+.navbar-collapse { 
+  margin-left: 1rem;
+}
+
+.navbar-toggler { 
+  margin-left: 1rem;
+}
+
+@media (min-width: 768px) {
 .logo {
   width: 30%;
+  padding-left: 1rem;
+}
+}
+
+@media (max-width: 768px) {
+.logo {
+  width: 30%;
+}
 }
 
 @media (max-width: 768px) {

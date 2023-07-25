@@ -2,7 +2,6 @@ import { Container } from "react-bootstrap";
 import { useContext, } from 'react';
 import { ThemeContext } from '../ThemeContext';
 import { UserMenu } from './UserMenu.js';
-import 'react-toastify/dist/ReactToastify.css';
 import '../css/userhomepage.css';
 import 'animate.css';
 import BeeExcited from "../images/bee-excited.svg";

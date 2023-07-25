@@ -11,6 +11,7 @@ export const NavBar = () => {
 
   const [activeLink, setActiveLink] = useState();
   const [scrolled, setScrolled] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
   const {theme, setTheme} = useContext(ThemeContext);
   const {loggedIn, setLoggedIn} = useContext(LoginContext);
 
@@ -47,6 +48,15 @@ export const NavBar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [])
 
+    // Combine navBars when logged in and width less than 768
+    useEffect(() => {
+      const onWidthChange = () => {
+        setWidth(window.innerWidth)
+      }
+      window.addEventListener("resize", onWidthChange);
+      return () => window.removeEventListener("resize", onWidthChange);
+    }, [])
+
   // Update theme
   const onUpdateTheme = () => {
     if (theme === "light") {
@@ -81,10 +91,11 @@ export const NavBar = () => {
     store.style.setProperty('--scroll-bar', '#090725');
   }
 
-  if (loggedIn === true){
+// If logged in and width is less than 768, we combine the two navbars into one.
+if (loggedIn === true) {
+  if (width < 768) {
     return (
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
-        <Container>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <span className="navbar-toggler-icon"></span>
@@ -99,9 +110,64 @@ export const NavBar = () => {
             </Navbar.Brand>
 
             <Nav className="ms-auto">
+                <Link>
                   <div className="button-nav" onClick={() => onUpdateTheme()}>
                       Theme
                   </div>
+                </Link>
+                <Link to="/settings">
+                  <div className={activeLink === 'settings' ? 'active-button-nav' : 'button-nav'}>
+                      Settings
+                  </div>
+                </Link>
+                <Link>
+                  <div className="button-nav">
+                      Check-in
+                  </div>
+                </Link>
+                <Link to="/stats">
+                  <div className="button-nav">
+                      My Stats 
+                  </div>
+                </Link>
+                <Link to="/journal">
+                  <div className="button-nav">
+                      Journal
+                  </div>
+                </Link> 
+                <Link to="/">
+                  <div className='button-nav' onClick={() => onLogout()}>
+                      Logout
+                  </div>
+                </Link> 
+            </Nav>
+
+          </Navbar.Collapse>
+      </Navbar>
+    )
+  }
+  else {
+    return (
+      <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
+
+          <Navbar.Toggle aria-controls="basic-navbar-nav">
+            <span className="navbar-toggler-icon"></span>
+          </Navbar.Toggle>
+
+          <Navbar.Collapse id="basic-navbar-nav">
+
+            <Navbar.Brand>
+                <Link to="/">
+                    <img className="logo" src={logo} alt="BeeFit logo"/>
+                </Link>
+            </Navbar.Brand>
+
+            <Nav className="ms-auto">
+                <Link>
+                  <div className="button-nav" onClick={() => onUpdateTheme()}>
+                      Theme
+                  </div>
+                </Link>
                 <Link to="/settings">
                   <div className={activeLink === 'settings' ? 'active-button-nav' : 'button-nav'}>
                       Settings
@@ -115,15 +181,14 @@ export const NavBar = () => {
             </Nav>
 
           </Navbar.Collapse>
-        </Container>
       </Navbar>
     )
   }
+}
+  
   // User not logged in
   return (
-  
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
-        <Container>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <span className="navbar-toggler-icon"></span>
@@ -138,9 +203,11 @@ export const NavBar = () => {
             </Navbar.Brand>
 
             <Nav className="ms-auto">
+                <Link>
                     <div className="button-nav" onClick={() => onUpdateTheme()}>
                         Theme
                     </div>
+                </Link>
                 <Link to="/register">
                     <div className={activeLink === 'register' ? 'active-button-nav' : 'button-nav'}>
                         Register
@@ -154,7 +221,6 @@ export const NavBar = () => {
             </Nav>
 
           </Navbar.Collapse>
-        </Container>
       </Navbar>
   )
 }
