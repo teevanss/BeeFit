@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState, React } from "react";
+import { useState, useEffect, React } from "react";
 import { ThemeContext } from "./ThemeContext";
 import { LoginContext } from "./LoginContext";
 import { NavBar } from './components/NavBar.js';
@@ -20,8 +20,17 @@ function App() {
 
   // Theme is light by default
   const [theme, setTheme] = useState("light");
+  
   // False by default
   const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("user") === null) {
+      setLoggedIn(false);
+    }
+    else {
+      setLoggedIn(true);
+    }
+  }, []);
 
   return (
     <div className="App">

@@ -9,31 +9,49 @@ import logo from "../images/logo.svg";
 
 export const NavBar = () => {
 
-  const [activeLink, setActiveLink] = useState();
+  const [activeLink, setActiveLink] = useState(window.location.pathname);
+  console.log(window.location.pathname)
   const [scrolled, setScrolled] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
   const {theme, setTheme} = useContext(ThemeContext);
   const {loggedIn, setLoggedIn} = useContext(LoginContext);
 
+  let userId = ""
+  if (loggedIn == true ) {
+    const id =  JSON.parse(localStorage.getItem("user"));
+          
+    let [key, valueUser] = Object.entries(id)[1];
+    let userId = valueUser;
+  }
+
   // To change button styling on NavBar to show active location
   useEffect(() => {
     const onClick = () => {
       if (window.location.pathname === "/register") {
-        setActiveLink("register");
+        setActiveLink("/register");
       }
       else if (window.location.pathname === "/login") {
-        setActiveLink("login");
+        setActiveLink("/login");
       }
       else if (window.location.pathname === "/settings") {
-        setActiveLink("settings");
+        setActiveLink("/settings");
       }
-      else {
-        setActiveLink("home");
+      if (window.location.pathname === `/stats/${userId}`) {
+        setActiveLink(`/stats/${userId}`);
+      }
+      else if (window.location.pathname === "/journal") {
+        setActiveLink("/journal");
+      }
+      else if (window.location.pathname === `/home/${userId}`) {
+        setActiveLink(`/home/${userId}`);
+      }
+      else if (window.location.pathname === "/") {
+        setActiveLink("/");
       }
     }
     window.addEventListener("click", onClick);
     return () => window.removeEventListener("click", onClick);
-  }, [])
+  }, [activeLink])
   
   // To change background color for NavBar depending on scroll location
   useEffect(() => {
@@ -116,17 +134,22 @@ if (loggedIn === true) {
                   </div>
                 </Link>
                 <Link to="/settings">
-                  <div className={activeLink === 'settings' ? 'active-button-nav' : 'button-nav'}>
+                  <div className={activeLink === '/settings' ? 'active-button-nav' : 'button-nav'}>
                       Settings
                   </div>
+                </Link>
+                <Link to={`/home/${userId}`}>
+                    <div className={activeLink === `/home/${userId}` ? 'active-button-nav' : 'button-nav'}>
+                        Home
+                    </div>
                 </Link>
                 <Link>
                   <div className="button-nav">
                       Check-in
                   </div>
                 </Link>
-                <Link to="/stats">
-                  <div className="button-nav">
+                <Link to={`/stats/${userId}`}>
+                  <div className={activeLink === `/stats/${userId}` ? 'active-button-nav' : 'button-nav'}>
                       My Stats 
                   </div>
                 </Link>
@@ -169,7 +192,7 @@ if (loggedIn === true) {
                   </div>
                 </Link>
                 <Link to="/settings">
-                  <div className={activeLink === 'settings' ? 'active-button-nav' : 'button-nav'}>
+                  <div className={activeLink === '/settings' ? 'active-button-nav' : 'button-nav'}>
                       Settings
                   </div>
                 </Link>
@@ -209,12 +232,12 @@ if (loggedIn === true) {
                     </div>
                 </Link>
                 <Link to="/register">
-                    <div className={activeLink === 'register' ? 'active-button-nav' : 'button-nav'}>
+                    <div className={activeLink === '/register' ? 'active-button-nav' : 'button-nav'}>
                         Register
                     </div>
                 </Link>
                 <Link to="/login">
-                  <div className={activeLink === 'login' ? 'active-button-nav' : 'button-nav'}>
+                  <div className={activeLink === '/login' ? 'active-button-nav' : 'button-nav'}>
                       Login
                   </div>
                 </Link> 

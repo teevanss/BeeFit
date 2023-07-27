@@ -14,13 +14,14 @@ import '../css/userhomepage.css';
 import 'animate.css';
 
 defaults.font.family = 'TelegrafReg, sans-serif';
-defaults.font.size = '25px';
+defaults.font.size = '20px';
 defaults.color = 'black';
 Chart.register(CategoryScale);
 
 export const Stats = () => {
 
   const {theme, setTheme} = useContext(ThemeContext);
+  
   // Chart doesn't exist yet so leave leabels and data blank
   const [data, setData] = useState({//labels: "Loading",
   datasets: [{

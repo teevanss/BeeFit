@@ -11,7 +11,7 @@ const CHECKIN_URL = "/api/checkin";
 
 export const UserMenu = () => {
 
-  const [activeLink, setActiveLink] = useState();
+  const [activeLink, setActiveLink] = useState(window.location.pathname);
   const {theme, setTheme} = useContext(ThemeContext);
   const [show, setShow] = useState(false);
   const [weight, setWeight] = useState("");
@@ -19,6 +19,11 @@ export const UserMenu = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const id =  JSON.parse(localStorage.getItem("user"));
+        
+  let [key, value] = Object.entries(id)[1];
+  let userId = value;
 
   // Handle check-in submission
   const handleSubmit = async (e) => {
@@ -32,11 +37,6 @@ export const UserMenu = () => {
           });
           return;
       }
-
-      const id =  JSON.parse(localStorage.getItem("user"));
-      
-      let [key, value] = Object.entries(id)[1];
-      let userId = value;
   
       // Send POST request
       try {
@@ -91,19 +91,19 @@ export const UserMenu = () => {
   // To change button styling on NavBar to show active location
   useEffect(() => {
     const onClick = () => {
-      if (window.location.pathname === "/stats") {
-        setActiveLink("stats");
+      if (window.location.pathname === `/stats/${userId}`) {
+        setActiveLink(`/stats/${userId}`);
       }
       else if (window.location.pathname === "/journal") {
         setActiveLink("journal");
     }
-      else {
-        setActiveLink("home");
+      else if (window.location.pathname === `/home/${userId}`) {
+        setActiveLink(`/home/${userId}`);
       }
     }
     window.addEventListener("click", onClick);
     return () => window.removeEventListener("click", onClick);
-  }, [])
+  }, [window.location.pathname])
 
     return (
         <Container>
@@ -140,17 +140,22 @@ export const UserMenu = () => {
 
           <Nav className="col-md-2 d-none d-md-block bg-transparent sidebar">
 
-                    <div className="button-nav" style={{marginTop: '2rem', marginLeft: '1rem'}} onClick={handleShow}>
+                <Link to={`/home/${userId}`}>
+                    <div className={activeLink === `/home/${userId}` ? 'active-button-nav' : 'button-nav'} style={{marginTop: '2rem', marginLeft: '1rem'}}>
+                        Home
+                    </div>
+                </Link>
+                    <div className='button-nav' style={{marginTop: '2rem', marginLeft: '1rem'}} onClick={handleShow}>
                         Check-in
                     </div>
-                <Link to="/stats">
-                    <div className="button-nav" style={{marginTop: '2rem', marginLeft: '1rem'}}>
+                <Link to={`/stats/${userId}`}>
+                    <div className={activeLink === `/stats/${userId}` ? 'active-button-nav' : 'button-nav'} style={{marginTop: '2rem', marginLeft: '1rem'}}>
                         My Stats 
                     </div>
                 </Link>
                 <Link to="/journal">
                   <div className="button-nav" style={{marginTop: '2rem', marginLeft: '1rem' }}>
-                      Journal
+                        Journal
                   </div>
                 </Link> 
             </Nav> 
