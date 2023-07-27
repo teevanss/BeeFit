@@ -1,4 +1,5 @@
 import { Container } from "react-bootstrap";
+import { Calendar2CheckFill } from 'react-bootstrap-icons';
 import { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '../ThemeContext';
 import { UserMenu } from './UserMenu.js';
@@ -6,9 +7,11 @@ import Chart from "chart.js/auto";
 import { Chart as ChartJS, CategoryScale } from 'chart.js';
 import { defaults } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { toast } from 'react-toastify';
+import axios from "../Axios.js";
+import 'react-toastify/dist/ReactToastify.css';
 import '../css/userhomepage.css';
 import 'animate.css';
-import axios from "../Axios.js";
 
 defaults.font.family = 'TelegrafReg, sans-serif';
 defaults.font.size = '25px';
@@ -21,28 +24,11 @@ export const Stats = () => {
   // Chart doesn't exist yet so leave leabels and data blank
   const [data, setData] = useState({//labels: "Loading",
   datasets: [{
-    label: "Daily Check-in Stats",
     //data: "Loading",
-    backgroundColor: [
-      'rgba(255, 99, 132, 0.2)',
-      'rgba(54, 162, 235, 0.2)',
-      'rgba(255, 206, 86, 0.2)',
-      'rgba(75, 192, 192, 0.2)',
-      'rgba(153, 102, 255, 0.2)',
-      'rgba(255, 159, 64, 0.2)'
-    ],
-    borderColor: [
-      'rgba(255, 99, 132, 1)',
-      'rgba(54, 162, 235, 1)',
-      'rgba(255, 206, 86, 1)',
-      'rgba(75, 192, 192, 1)',
-      'rgba(153, 102, 255, 1)',
-      'rgba(255, 159, 64, 1)'
-    ],
-    borderWidth: 1
   }]
   })
 
+  // Send GET request for check-in data for user
   useEffect(() => {
     const fetchStats = async () => {
 
@@ -57,48 +43,83 @@ export const Stats = () => {
           "Content-Type": "application/json", 
           "Access-Control-Allow-Origin": "http://localhost:3000",
         }
-      })
+      }
+      )
       .then(response => {
-        console.log(response.data);
+        
+        let color = "white"
+        if (theme === "light") {
+          color = "#5d6700"
+        }
+        else {
+          color = "#261226"
+        }
+
         // Now that we know we have received our data we can set it
         setData ({
-          labels: response.data?.map((item, index) => (item.date.substring(0,10))),
+          // Get date and only take first 10 characters, example: 01-01-2020
+          labels: response.data?.map((item, index) => (item.date.substring(0,10))), // X-axis
           datasets: [{
             label: "Daily Check-in Stats",
-            data: response.data?.map((item, index) => (item.weight)),
-            backgroundColor: [
-              'black',
-            ],
+            fill: true, // Fill in the area below the line
+            tension: 0.3, // Roundness of line
+            data: response.data?.map((item, index) => (item.weight)), // Y-axis
+            // Make the fill color a gradient 
+            backgroundColor: (ctx) => {
+              const canvas = ctx.chart.ctx;
+              const gradient = canvas.createLinearGradient(160,5,90,120);
+              if (theme === "light") {
+                gradient.addColorStop(0, 'rgba(183, 156, 0, 0.53)');
+                gradient.addColorStop(0.5, 'rgba(92, 102, 0, 0.53)');
+              }
+              else {
+                gradient.addColorStop(0, 'rgba(74, 35, 74, 0.54)');
+                gradient.addColorStop(0.5, 'rgba(29, 2, 41, 0.56)');
+              }
+              return gradient;
+            },
+            pointBackgroundColor: color,
             borderColor: [
-              'white',
+              color,
             ],
-            borderWidth: 1
+            borderWidth: 2.5 // Thickness of line
           }]
         });
       });
         } catch (err) {
           if (!err?.response) {
-              console.log(err)
+            toast.error("No server response. We are so sorry!", {
+              position: "top-left",
+              autoClose: 5000,
+              theme: theme,
+              });
+          } else {
+          toast.error("Error Retrieving Check-in Information.", {
+              position: "top-left",
+              autoClose: 5000,
+              theme: theme,
+              });
             };
           }
     };
     fetchStats()
-  }, [])
+    // Run effect if theme changes (to update colors)
+  }, [theme])
 
+  // Chart options
   var options = {
     maintainAspectRatio: false,
-    scales: {
+    plugins: {
+        legend: false,
     },
-    legend: {
-      labels: {
-      },
-    },
-  }
+   }
+
     return ( 
 
-        <section className="user-home" id={theme === 'light' ? 'user-home' : 'user-home-dark'}> 
+        <section className="user-home-container" id={theme === 'light' ? 'user-home' : 'user-home-dark'}> 
         <Container>
 
+              <h3>Check-in Log <Calendar2CheckFill size={40} color={theme === 'light' ? 'black' : 'white'} className="icon-cal"/></h3>
               <div className="chart"> 
                 <Line data={data} height={500} options={options}/>
               </div>

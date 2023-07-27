@@ -70,6 +70,18 @@
     transition: 0.3s ease-in-out;
 }
 
+.user-home-container h3 {
+    text-align: center;
+    font-family: AgrandirWide, sans-serif;
+    font-size: 40px;
+    margin-left: 10rem;
+    letter-spacing: 1px;
+    color: var(--text-color2);
+    line-height: 1;
+    display: block;
+    transition: 0.3s ease-in-out;
+}
+
 .user-home-container a {
     color: var(--text-color2) !important;
     transition: 0.3s ease-in-out;
@@ -291,4 +303,9 @@
 /************ Chart CSS ************/
 .chart {
     margin-left: 10rem;
+}
+
+.icon-cal {
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
 }
