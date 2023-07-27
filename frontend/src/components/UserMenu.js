@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Nav, Container, Modal } from "react-bootstrap";
-import { Pencil } from 'react-bootstrap-icons';
+import { Pencil, Calendar2Check, HouseHeart, Journal, GraphDown } from 'react-bootstrap-icons';
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import { ThemeContext } from '../ThemeContext';
@@ -16,6 +16,7 @@ export const UserMenu = () => {
   const [show, setShow] = useState(false);
   const [weight, setWeight] = useState("");
   const [success, setSuccess] = useState("false");
+  const [width, setWidth] = useState(window.innerWidth);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,6 +25,15 @@ export const UserMenu = () => {
         
   let [key, value] = Object.entries(id)[1];
   let userId = value;
+
+    // Change sidebar buttons if width less than
+    useEffect(() => {
+    const onWidthChange = () => {
+        setWidth(window.innerWidth)
+    }
+    window.addEventListener("resize", onWidthChange);
+    return () => window.removeEventListener("resize", onWidthChange);
+    }, [])
 
   // Handle check-in submission
   const handleSubmit = async (e) => {
@@ -138,8 +148,9 @@ export const UserMenu = () => {
           </Modal>
           {/* End of popup modal */}
 
-          <Nav className="col-md-2 d-none d-md-block bg-transparent sidebar">
-
+            {width > 1300
+            ?
+            (<Nav className="col-md-2 d-none d-md-block bg-transparent sidebar">
                 <Link to={`/home/${userId}`}>
                     <div className={activeLink === `/home/${userId}` ? 'active-button-nav' : 'button-nav'} style={{marginTop: '2rem', marginLeft: '1rem'}}>
                         Home
@@ -157,8 +168,22 @@ export const UserMenu = () => {
                   <div className="button-nav" style={{marginTop: '2rem', marginLeft: '1rem' }}>
                         Journal
                   </div>
+                </Link>
+            </Nav>)
+                :
+            (<Nav className="col-md-2 d-none d-md-block bg-transparent sidebar">
+                <Link to={`/home/${userId}`}>
+                    <HouseHeart size={55} color="white" className="sideBarIcon"/><br></br>
+                </Link>
+                    <Calendar2Check size={55} color="white" className="sideBarIcon" onClick={handleShow}/><br></br>
+                <Link to={`/stats/${userId}`}>
+                    <GraphDown size={55} color="white" className="sideBarIcon"/><br></br>
+                </Link>
+                <Link to="/journal">
+                    <Journal size={55} color="white" className="sideBarIcon"/>
                 </Link> 
-            </Nav> 
+            </Nav>)
+            }
 
         </Container>
     )

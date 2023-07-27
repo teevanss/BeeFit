@@ -13,6 +13,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../css/userhomepage.css';
 import 'animate.css';
 
+const id =  JSON.parse(localStorage.getItem("user"));
+let [key, value] = Object.entries(id)[1];
+let userId = value;
+const STATS_URL = "http://localhost:8080/api/checkin?username=" + userId;
+
 defaults.font.family = 'TelegrafReg, sans-serif';
 defaults.font.size = '20px';
 defaults.color = 'black';
@@ -21,7 +26,7 @@ Chart.register(CategoryScale);
 export const Stats = () => {
 
   const {theme, setTheme} = useContext(ThemeContext);
-  
+
   // Chart doesn't exist yet so leave leabels and data blank
   const [data, setData] = useState({//labels: "Loading",
   datasets: [{
@@ -35,7 +40,8 @@ export const Stats = () => {
 
       // Send GET request
       try {
-        const response = await axios.get("http://localhost:8080/api/checkin?username=tayworo", 
+        const response = await axios.get(
+        STATS_URL, 
       {
       },
       {

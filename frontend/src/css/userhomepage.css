@@ -300,6 +300,12 @@
     border-right: 1rem solid;
 }
 
+.sideBarIcon {
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
 /************ Chart CSS ************/
 .chart {
     margin-left: 10rem;

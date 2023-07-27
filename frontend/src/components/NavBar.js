@@ -10,7 +10,6 @@ import logo from "../images/logo.svg";
 export const NavBar = () => {
 
   const [activeLink, setActiveLink] = useState(window.location.pathname);
-  console.log(window.location.pathname)
   const [scrolled, setScrolled] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
   const {theme, setTheme} = useContext(ThemeContext);
