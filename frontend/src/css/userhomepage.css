@@ -32,7 +32,7 @@
 /************ User Homepage CSS ************/
 #user-home {
     margin-top: 0;
-    padding: 20% 0 30% 0;
+    padding: 15% 0 30% 0;
     background-image: url('../images/background-house.png');
     background-position: top center;
     background-size: cover;
@@ -41,7 +41,7 @@
 
 #user-home-dark {
     margin-top: 0;
-    padding: 20% 0 30% 0;
+    padding: 15% 0 30% 0;
     background-image: url('../images/background-house-night.png');
     background-position: top center;
     background-size: cover;
@@ -251,6 +251,7 @@
 
 /************ Sidebar CSS ************/
 .sidebar {
+    font-family: TelegrafBold, sans-serif;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -285,4 +286,9 @@
     background-color: #74191b !important;
     border-image: linear-gradient(to bottom, #c05230, #d86a2d) 30;
     border-right: 1rem solid;
+}
+
+/************ Chart CSS ************/
+.chart {
+    margin-left: 10rem;
 }
