@@ -12,7 +12,7 @@ export const UserHomepage = () => {
 
     return ( 
 
-        <section className="user-home" id={theme === 'light' ? 'user-home' : 'user-home-dark'}> 
+        <section className="user-home-container" id={theme === 'light' ? 'user-home' : 'user-home-dark'}> 
         <Container>
 
             <div className="animate__animated animate__zoomIn">

@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Calendar2CheckFill } from 'react-bootstrap-icons';
 import { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '../ThemeContext';
@@ -13,10 +13,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../css/userhomepage.css';
 import 'animate.css';
 
-const id =  JSON.parse(localStorage.getItem("user"));
-let [key, value] = Object.entries(id)[1];
-let userId = value;
-const STATS_URL = "http://localhost:8080/api/checkin?username=" + userId;
+let STATS_URL = "http://localhost:8080/api/checkin?username="
+let id =  JSON.parse(localStorage.getItem("user"));
+if (localStorage.getItem("user") !== null) {
+  let [key, value] = Object.entries(id)[1];
+  let userId = value;
+  STATS_URL = "http://localhost:8080/api/checkin?username=" + userId; 
+}
 
 defaults.font.family = 'TelegrafReg, sans-serif';
 defaults.font.size = '20px';
@@ -27,7 +30,7 @@ export const Stats = () => {
 
   const {theme, setTheme} = useContext(ThemeContext);
 
-  // Chart doesn't exist yet so leave leabels and data blank
+  // Chart doesn't exist yet so leave labels and data blank
   const [data, setData] = useState({//labels: "Loading",
   datasets: [{
     //data: "Loading",
@@ -101,7 +104,7 @@ export const Stats = () => {
               theme: theme,
               });
           } else {
-          toast.error("Error Retrieving Check-in Information.", {
+          toast.error("There was an error retrieving your check-in information.", {
               position: "top-left",
               autoClose: 5000,
               theme: theme,
@@ -124,16 +127,22 @@ export const Stats = () => {
     return ( 
 
         <section className="user-home-container" id={theme === 'light' ? 'user-home' : 'user-home-dark'}> 
-        <Container>
+          <Container>
+            <Row>
 
-              <h3>Check-in Log <Calendar2CheckFill size={40} color={theme === 'light' ? 'black' : 'white'} className="icon-cal"/></h3>
-              <div className="chart"> 
-                <Line data={data} height={500} options={options}/>
-              </div>
+                <Col xs={0} md={2} xl={2}>
+                  <UserMenu/>
+                </Col>
 
-            <UserMenu/>
+                <Col xs={12} md={10} xl={10}>
+                  <h3>Check-in Log <Calendar2CheckFill size={40} color={theme === 'light' ? 'black' : 'white'} className="icon-cal"/></h3>
+                  <div className="chart"> 
+                    <Line data={data} height={500} options={options}/>
+                  </div>
+                </Col>
 
-        </Container>
+            </Row>
+          </Container>
         </section>
   )
 }

@@ -15,6 +15,7 @@ import { Login } from './components/Login.js';
 import { ForgotPassword } from './components/ForgotPassword.js';
 import { UserHomepage } from './components/UserHomepage.js';
 import { Stats } from './components/Stats.js';
+import { Journal } from './components/Journal.js';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
             <Route path="/forgotpassword" element={<ForgotPassword />}/>
             <Route path="/home/:id" element={<UserHomepage />}/>
             <Route path="/stats/:id" element={<Stats />}/>
+            <Route path="/journal/:id" element={<Journal />}/>
           </Routes>
           </LoginContext.Provider>
           </ThemeContext.Provider>

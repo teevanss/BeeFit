@@ -103,13 +103,13 @@ export const Login = () => {
         <Container>
             <Row className="align-items-center">
 
-            <Col xs={14} md={8} xl={6}>
+            <Col xs={12} md={4} xl={6}>
                 <div className="animate__animated animate__zoomIn">
                     <img className="bee" src={BeeStick} alt="Bee holding honey stick"/>
                 </div>
             </Col>
 
-            <Col xs={14} md={8} xl={6}>
+            <Col xs={0} md={8} xl={6}>
             <div className="animate__animated animate__fadeIn">
                 <form onSubmit={handleSubmit}>
                     <div className="container">

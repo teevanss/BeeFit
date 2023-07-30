@@ -74,7 +74,6 @@
     text-align: center;
     font-family: AgrandirWide, sans-serif;
     font-size: 40px;
-    margin-left: 10rem;
     letter-spacing: 1px;
     color: var(--text-color2);
     line-height: 1;
@@ -182,6 +181,13 @@
     margin-left: auto;
     margin-right: auto;
     animation: updown 3s linear infinite;
+}
+
+.book {
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @keyframes updown {
@@ -302,16 +308,14 @@
 
 .sideBarIcon {
     margin-left: 1rem;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
     cursor: pointer;
 }
 
 /************ Chart CSS ************/
-.chart {
-    margin-left: 10rem;
-}
-
 .icon-cal {
     margin-bottom: 1rem;
     margin-left: 0.5rem;
 }
+
+/************ Journal CSS ************/

@@ -11,22 +11,24 @@ const CHECKIN_URL = "/api/checkin";
 
 export const UserMenu = () => {
 
-  const [activeLink, setActiveLink] = useState(window.location.pathname);
-  const {theme, setTheme} = useContext(ThemeContext);
-  const [show, setShow] = useState(false);
-  const [weight, setWeight] = useState("");
-  const [success, setSuccess] = useState("false");
-  const [width, setWidth] = useState(window.innerWidth);
+    const [activeLink, setActiveLink] = useState(window.location.pathname);
+    const {theme, setTheme} = useContext(ThemeContext);
+    const [show, setShow] = useState(false);
+    const [weight, setWeight] = useState("");
+    const [success, setSuccess] = useState("false");
+    const [width, setWidth] = useState(window.innerWidth);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-  const id =  JSON.parse(localStorage.getItem("user"));
-        
-  let [key, value] = Object.entries(id)[1];
-  let userId = value;
+    const id =  JSON.parse(localStorage.getItem("user"));
+    let userId = "";
+    if (localStorage.getItem("user") !== null) {
+        let [key, value] = Object.entries(id)[1];
+        userId = value;
+    }
 
-    // Change sidebar buttons if width less than
+    // Change sidebar buttons if width less than 1250
     useEffect(() => {
     const onWidthChange = () => {
         setWidth(window.innerWidth)
@@ -89,7 +91,7 @@ export const UserMenu = () => {
                   theme: theme,
                   });
           } else {
-              toast.error("Error checking in.", {
+              toast.error("There was an error retrieving your check-in information.", {
                   position: "top-left",
                   autoClose: 5000,
                   theme: theme,
@@ -104,9 +106,9 @@ export const UserMenu = () => {
       if (window.location.pathname === `/stats/${userId}`) {
         setActiveLink(`/stats/${userId}`);
       }
-      else if (window.location.pathname === "/journal") {
-        setActiveLink("journal");
-    }
+      else if (window.location.pathname === `/journal/${userId}`) {
+        setActiveLink(`/journal/${userId}`);
+      }
       else if (window.location.pathname === `/home/${userId}`) {
         setActiveLink(`/home/${userId}`);
       }
@@ -148,7 +150,7 @@ export const UserMenu = () => {
           </Modal>
           {/* End of popup modal */}
 
-            {width > 1300
+            {width > 1250
             ?
             (<Nav className="col-md-2 d-none d-md-block bg-transparent sidebar">
                 <Link to={`/home/${userId}`}>
@@ -164,7 +166,7 @@ export const UserMenu = () => {
                         My Stats 
                     </div>
                 </Link>
-                <Link to="/journal">
+                <Link to={`/journal/${userId}`}>
                   <div className="button-nav" style={{marginTop: '2rem', marginLeft: '1rem' }}>
                         Journal
                   </div>
@@ -179,7 +181,7 @@ export const UserMenu = () => {
                 <Link to={`/stats/${userId}`}>
                     <GraphDown size={55} color="white" className="sideBarIcon"/><br></br>
                 </Link>
-                <Link to="/journal">
+                <Link to={`/journal/${userId}`}>
                     <Journal size={55} color="white" className="sideBarIcon"/>
                 </Link> 
             </Nav>)

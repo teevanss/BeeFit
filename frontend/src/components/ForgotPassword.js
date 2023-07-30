@@ -18,13 +18,13 @@ export const ForgotPassword = () => {
         <Container>
             <Row className="align-items-center">
 
-            <Col xs={7} md={4} xl={3}>
+            <Col xs={0} md={2} xl={3}>
                 <div className="animate__animated animate__zoomIn">
                     <img className="bee" src={BeeHappy} alt="A happy bee"/>
                 </div>
             </Col>
 
-            <Col xs={14} md={8} xl={6}>
+            <Col xs={12} md={8} xl={6}>
             <div className="animate__animated animate__fadeIn">
                 <form action="action_page.php">
                     <div className="container">
@@ -46,7 +46,7 @@ export const ForgotPassword = () => {
             </div>
             </Col>
 
-            <Col xs={7} md={4} xl={3}>
+            <Col xs={0} md={2} xl={3}>
                 <div className="animate__animated animate__zoomIn">
                     <img className="bee" src={BeeHoney} alt="Bee holding honey"/>
                 </div>
