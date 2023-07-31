@@ -58,7 +58,7 @@ public class ForgotPasswordController {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message);
 
-            helper.setFrom("beefitsupp@gmail.com", "BeeFit Support");
+            helper.setFrom("${spring.mail.username}", "BeeFit Support");
             helper.setTo(recipientEmail);
 
             String subject = "Here's the link to reset your password.";
