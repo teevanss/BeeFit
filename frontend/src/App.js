@@ -13,6 +13,7 @@ import { Homepage } from './components/Homepage.js';
 import { Register } from './components/Register.js';
 import { Login } from './components/Login.js';
 import { ForgotPassword } from './components/ForgotPassword.js';
+import { ForgotUsername } from './components/ForgotUsername.js';
 import { ResetPassword } from './components/ResetPassword.js';
 import { UserHomepage } from './components/UserHomepage.js';
 import { Stats } from './components/Stats.js';
@@ -45,6 +46,7 @@ function App() {
             <Route path="/register" element={<Register />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/forgotpassword" element={<ForgotPassword />}/>
+            <Route path="/forgotusername" element={<ForgotUsername />}/>
             <Route path="/resetpassword" element={<ResetPassword />}/>
             <Route path="/home/:id" element={<UserHomepage />}/>
             <Route path="/stats/:id" element={<Stats />}/>

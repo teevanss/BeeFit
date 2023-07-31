@@ -32,6 +32,12 @@ export const NavBar = () => {
       else if (window.location.pathname === "/login") {
         setActiveLink("/login");
       }
+      else if (window.location.pathname === "/forgotpassword") {
+        setActiveLink("/forgotpassword");
+      }
+      else if (window.location.pathname === "/resetpassword") {
+        setActiveLink("/resetpassword");
+      }
       else if (window.location.pathname === "/settings") {
         setActiveLink("/settings");
       }
@@ -50,7 +56,7 @@ export const NavBar = () => {
     }
     window.addEventListener("click", onClick);
     return () => window.removeEventListener("click", onClick);
-  }, [activeLink])
+  }, [window.location.pathname])
   
   // To change background color for NavBar depending on scroll location
   useEffect(() => {

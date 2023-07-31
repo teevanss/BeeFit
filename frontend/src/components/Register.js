@@ -150,7 +150,7 @@ export const Register = () => {
             <div className="animate__animated animate__fadeIn">
                 <form onSubmit={handleSubmit}>
                     <div className="container">
-                        <h1>R<a>e</a>gist<a>e</a>r</h1>
+                        <h1>R<b>e</b>gist<b>e</b>r</h1>
                         <h2>Ready to bee the best you?</h2>
 
                         <div className="iconDiv">
@@ -177,7 +177,7 @@ export const Register = () => {
                     </div>
 
                     <div className="sign-in">
-                        Already have an account? <Link to="/login"><a>Sign in</a></Link>
+                        Already have an account? <Link to="/login">Sign in</Link>
                     </div>
                 </form>
             </div>

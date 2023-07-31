@@ -134,7 +134,7 @@ export const ResetPassword = () => {
             <div className="animate__animated animate__fadeIn">
                 <form onSubmit={handleSubmit}>
                     <div className="container">
-                        <h1>Reset Pass<a>word</a></h1>
+                        <h1>Reset Pass<b>word</b></h1>
                         <h2>Please enter the code you received from us in your email.</h2>
 
                         <div className="iconDiv">

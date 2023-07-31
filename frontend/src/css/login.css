@@ -39,6 +39,17 @@
 }
 
 /************ Login CSS ************/
+.forgot {
+    font-family: TelegrafReg, sans-serif;
+    color: var(--text-color2);
+    font-size: 15px;
+    padding-top: 1rem;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 100%; 
+    transition: 0.3s ease-in-out;
+}
+
 #login {
     margin-top: 0;
     padding: 15% 0 30% 0;
@@ -79,7 +90,7 @@
     transition: 0.3s ease-in-out;
 }
 
-.login a {
+.login b, a {
     color: var(--text-color2) !important;
     width: 100%;
     transition: 0.3s ease-in-out;

@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from "../Axios.js";
 const FORGOTPASS_URL = "/api/forgotpw";
 
-export const ForgotPassword = () => {
+export const ForgotUsername = () => {
 
     const {theme, setTheme} = useContext(ThemeContext);
     const [email, setEmail] = useState("");
@@ -90,7 +90,7 @@ export const ForgotPassword = () => {
             <div className="animate__animated animate__fadeIn">
                 <form onSubmit={handleSubmit}>
                     <div className="container">
-                        <h1>Reset Pass<b>word</b></h1>
+                        <h1>Forgot User<b>name</b></h1>
                         <h2>Please enter the email associated with your account.</h2>
 
                         <div className="iconDiv">

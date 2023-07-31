@@ -108,7 +108,7 @@
     transform: translateY(-50%);
 }
 
-/************ Popup Checkin ************/
+/************ Popup for Daily Check-in ************/
 .modal {
     --bs-modal-width: 50% !important;
 }
@@ -312,7 +312,7 @@
     cursor: pointer;
 }
 
-/************ Chart CSS ************/
+/************ Stats CSS ************/
 .icon-cal {
     margin-bottom: 1rem;
     margin-left: 0.5rem;
