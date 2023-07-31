@@ -70,15 +70,22 @@ export const Journal = () => {
         <section className="user-home-container" id={theme === 'light' ? 'user-home' : 'user-home-dark'}> 
           <Container>
             <Row className="align-items-center">
-
-          <Col xs={0} md={2} xl={2}>
-            <UserMenu/>
-          </Col>
-
-          <Col xs={12} md={10} xl={10}>
-            <img className="book" src={journal} alt="A book to write in"/>
-          </Col>
-
+              <Col xs={0} md={2} xl={2}>
+                <UserMenu/>
+              </Col>
+              
+              <Col xs={12} md={10} xl={10}>
+                <div className="bookDiv">
+                  <img className="book" src={journal} alt="A book to write in"/>
+                  
+                  <form>
+                    <div className="book-container">
+                        <textarea type="text" placeholder="Write about your day here!" id="journal" required></textarea>
+                        {/*<button type="submit" className="reg-button">Submit</button>*/}
+                    </div>
+                  </form>
+                </div>
+              </Col>
             </Row>
           </Container>
         </section>

@@ -319,3 +319,29 @@
 }
 
 /************ Journal CSS ************/
+.book-container {
+    position: absolute;
+    top: 10%;
+    left: 7%;
+}
+
+.bookDiv {
+    position: relative;
+}
+
+.book-container textarea {
+    width: 25rem;
+    height: 28rem;
+    resize: none;
+    background-color: transparent;
+    border: none;
+}
+
+.book-container textarea::placeholder {
+    font-family: TelegrafReg, sans-serif;
+    color: #5d5d5d;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 100%;
+}
