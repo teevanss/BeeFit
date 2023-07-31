@@ -4,7 +4,9 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "checkIn")
 public class CheckIn {
     @Id
     private BigInteger id;

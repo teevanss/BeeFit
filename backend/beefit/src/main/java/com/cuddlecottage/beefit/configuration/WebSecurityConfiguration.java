@@ -73,6 +73,7 @@ public class WebSecurityConfiguration {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> {
                 auth.requestMatchers("/").permitAll();
+                auth.requestMatchers("/forgot_password").permitAll();
                 auth.requestMatchers("/hello").permitAll();
                 auth.requestMatchers("/api/auth/**").permitAll();
                 auth.requestMatchers("/api/test/**").permitAll();
