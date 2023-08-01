@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import { ThemeContext } from '../ThemeContext';
@@ -16,11 +16,10 @@ export const NavBar = () => {
   const {loggedIn, setLoggedIn} = useContext(LoginContext);
 
   let userId = ""
-  if (loggedIn == true ) {
+  if (localStorage.getItem("user") !== null) {
     const id =  JSON.parse(localStorage.getItem("user"));
-          
     let [key, valueUser] = Object.entries(id)[1];
-    let userId = valueUser;
+    userId = valueUser;
   }
 
   // To change button styling on NavBar to show active location
@@ -56,7 +55,7 @@ export const NavBar = () => {
     }
     window.addEventListener("click", onClick);
     return () => window.removeEventListener("click", onClick);
-  }, [window.location.pathname])
+  }, [userId])
   
   // To change background color for NavBar depending on scroll location
   useEffect(() => {
@@ -105,6 +104,9 @@ export const NavBar = () => {
     store.style.setProperty('--bee-yellow', '#ffb313');
     store.style.setProperty('--input-box', 'rgb(255, 246, 189)');
     store.style.setProperty('--scroll-bar', '#582c08');
+    store.style.setProperty('--side-bar', '#74191b'); 
+    store.style.setProperty('--border1', '#c05230');
+    store.style.setProperty('--border2', '#d86a2d'); 
   }
   else if (theme === "dark") {
     store.style.setProperty('--text-color', 'black');
@@ -112,6 +114,9 @@ export const NavBar = () => {
     store.style.setProperty('--bee-yellow', '#230999');
     store.style.setProperty('--input-box', 'rgb(208, 192, 252)');
     store.style.setProperty('--scroll-bar', '#090725');
+    store.style.setProperty('--side-bar', '#400e44'); 
+    store.style.setProperty('--border1', '#82264d');
+    store.style.setProperty('--border2', '#6f205c');
   }
 
 // If logged in and width is less than 768, we combine the two navbars into one.
@@ -138,11 +143,6 @@ if (loggedIn === true) {
                       Theme
                   </div>
                 </Link>
-                <Link to="/settings">
-                  <div className={activeLink === '/settings' ? 'active-button-nav' : 'button-nav'}>
-                      Settings
-                  </div>
-                </Link>
                 <Link to={`/home/${userId}`}>
                     <div className={activeLink === `/home/${userId}` ? 'active-button-nav' : 'button-nav'}>
                         Home
@@ -163,6 +163,11 @@ if (loggedIn === true) {
                       Journal
                   </div>
                 </Link> 
+                <Link to="/settings">
+                  <div className={activeLink === '/settings' ? 'active-button-nav' : 'button-nav'}>
+                      Settings
+                  </div>
+                </Link>
                 <Link to="/">
                   <div className='button-nav' onClick={() => onLogout()}>
                       Logout
@@ -196,9 +201,9 @@ if (loggedIn === true) {
                       Theme
                   </div>
                 </Link>
-                <Link to="/settings">
-                  <div className={activeLink === '/settings' ? 'active-button-nav' : 'button-nav'}>
-                      Settings
+                <Link to={`/home/${userId}`}>
+                  <div className={activeLink === `/home/${userId}` ? 'active-button-nav' : 'button-nav'}>
+                      Home
                   </div>
                 </Link>
                 <Link to="/">

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Nav, Container, Modal } from "react-bootstrap";
-import { Pencil, Calendar2Check, HouseHeart, Journal, GraphDown } from 'react-bootstrap-icons';
+import { Pencil, Calendar2Check, Gear, Journal, GraphDown } from 'react-bootstrap-icons';
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import { ThemeContext } from '../ThemeContext';
@@ -109,13 +109,13 @@ export const UserMenu = () => {
       else if (window.location.pathname === `/journal/${userId}`) {
         setActiveLink(`/journal/${userId}`);
       }
-      else if (window.location.pathname === `/home/${userId}`) {
-        setActiveLink(`/home/${userId}`);
+      else if (window.location.pathname === `/settings/${userId}`) {
+        setActiveLink(`/settings/${userId}`);
       }
     }
     window.addEventListener("click", onClick);
     return () => window.removeEventListener("click", onClick);
-  }, [window.location.pathname])
+  }, [userId])
 
     return (
         <Container>
@@ -153,11 +153,6 @@ export const UserMenu = () => {
             {width > 1250
             ?
             (<Nav className="col-md-2 d-none d-md-block bg-transparent sidebar">
-                <Link to={`/home/${userId}`}>
-                    <div className={activeLink === `/home/${userId}` ? 'active-button-nav' : 'button-nav'} style={{marginTop: '2rem', marginLeft: '1rem'}}>
-                        Home
-                    </div>
-                </Link>
                     <div className='button-nav' style={{marginTop: '2rem', marginLeft: '1rem'}} onClick={handleShow}>
                         Check-in
                     </div>
@@ -167,23 +162,28 @@ export const UserMenu = () => {
                     </div>
                 </Link>
                 <Link to={`/journal/${userId}`}>
-                  <div className="button-nav" style={{marginTop: '2rem', marginLeft: '1rem' }}>
+                  <div className={activeLink === `/journal/${userId}` ? 'active-button-nav' : 'button-nav'} style={{marginTop: '2rem', marginLeft: '1rem' }}>
                         Journal
                   </div>
+                </Link>
+                <Link to={`/settings/${userId}`}>
+                    <div className={activeLink === `/settings/${userId}` ? 'active-button-nav' : 'button-nav'} style={{marginTop: '2rem', marginLeft: '1rem'}}>
+                        Settings
+                    </div>
                 </Link>
             </Nav>)
                 :
             (<Nav className="col-md-2 d-none d-md-block bg-transparent sidebar">
-                <Link to={`/home/${userId}`}>
-                    <HouseHeart size={55} color="white" className="sideBarIcon"/><br></br>
-                </Link>
                     <Calendar2Check size={55} color="white" className="sideBarIcon" onClick={handleShow}/><br></br>
                 <Link to={`/stats/${userId}`}>
                     <GraphDown size={55} color="white" className="sideBarIcon"/><br></br>
                 </Link>
                 <Link to={`/journal/${userId}`}>
-                    <Journal size={55} color="white" className="sideBarIcon"/>
+                    <Journal size={55} color="white" className="sideBarIcon"/><br></br>
                 </Link> 
+                <Link to={`/settings/${userId}`}>
+                    <Gear size={59} color="white" className="sideBarIcon"/>
+                </Link>
             </Nav>)
             }
 

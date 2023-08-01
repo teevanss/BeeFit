@@ -15,7 +15,6 @@ const RESETPASS_URL = "/api/resetpw";
 export const ResetPassword = () => {
 
     const {theme, setTheme} = useContext(ThemeContext);
-    const [user, setUser] = useState("");
     const [code, setCode] = useState("");
     const [psw, setPsw] = useState("");
     const [pswRepeat, setPswRepeat] = useState("");
@@ -68,7 +67,6 @@ export const ResetPassword = () => {
             {
                 token: code,
                 password: psw,
-                user: "f4iiinst4rz",
             },
             {
                 headers: { 
@@ -81,7 +79,6 @@ export const ResetPassword = () => {
     
             // Clear state and controlled inputs
             setCode("");
-            setUser("");
             setPsw("");
             setPswRepeat("");
     
