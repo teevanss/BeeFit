@@ -140,17 +140,17 @@ export const Register = () => {
         <Container>
             <Row className="align-items-center">
 
-            <Col xs={7} md={4} xl={3}>
+            <Col xs={0} md={2} xl={3}>
                 <div className="animate__animated animate__zoomIn">
                     <img className="bee" src={BeeHappy} alt="A happy bee"/>
                 </div>
             </Col>
 
-            <Col xs={14} md={8} xl={6}>
+            <Col xs={12} md={8} xl={6}>
             <div className="animate__animated animate__fadeIn">
                 <form onSubmit={handleSubmit}>
                     <div className="container">
-                        <h1>R<a>e</a>gist<a>e</a>r</h1>
+                        <h1>R<b>e</b>gist<b>e</b>r</h1>
                         <h2>Ready to bee the best you?</h2>
 
                         <div className="iconDiv">
@@ -177,13 +177,13 @@ export const Register = () => {
                     </div>
 
                     <div className="sign-in">
-                        Already have an account? <Link to="/login"><a>Sign in</a></Link>
+                        Already have an account? <Link to="/login">Sign in</Link>
                     </div>
                 </form>
             </div>
             </Col>
 
-            <Col xs={7} md={4} xl={3}>
+            <Col xs={0} md={2} xl={3}>
                 <div className="animate__animated animate__zoomIn">
                     <img className="bee" src={BeeHoney} alt="Bee holding honey"/>
                 </div>

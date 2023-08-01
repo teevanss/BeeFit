@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Nav, Container, Modal } from "react-bootstrap";
-import { Pencil } from 'react-bootstrap-icons';
+import { Pencil, Calendar2Check, Gear, Journal, GraphDown } from 'react-bootstrap-icons';
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import { ThemeContext } from '../ThemeContext';
@@ -11,14 +11,31 @@ const CHECKIN_URL = "/api/checkin";
 
 export const UserMenu = () => {
 
-  const [activeLink, setActiveLink] = useState();
-  const {theme, setTheme} = useContext(ThemeContext);
-  const [show, setShow] = useState(false);
-  const [weight, setWeight] = useState("");
-  const [success, setSuccess] = useState("false");
+    const [activeLink, setActiveLink] = useState(window.location.pathname);
+    const {theme, setTheme} = useContext(ThemeContext);
+    const [show, setShow] = useState(false);
+    const [weight, setWeight] = useState("");
+    const [success, setSuccess] = useState("false");
+    const [width, setWidth] = useState(window.innerWidth);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const id =  JSON.parse(localStorage.getItem("user"));
+    let userId = "";
+    if (localStorage.getItem("user") !== null) {
+        let [key, value] = Object.entries(id)[1];
+        userId = value;
+    }
+
+    // Change sidebar buttons if width less than 1250
+    useEffect(() => {
+    const onWidthChange = () => {
+        setWidth(window.innerWidth)
+    }
+    window.addEventListener("resize", onWidthChange);
+    return () => window.removeEventListener("resize", onWidthChange);
+    }, [])
 
   // Handle check-in submission
   const handleSubmit = async (e) => {
@@ -32,11 +49,6 @@ export const UserMenu = () => {
           });
           return;
       }
-
-      const id =  JSON.parse(localStorage.getItem("user"));
-      
-      let [key, value] = Object.entries(id)[1];
-      let userId = value;
   
       // Send POST request
       try {
@@ -79,7 +91,7 @@ export const UserMenu = () => {
                   theme: theme,
                   });
           } else {
-              toast.error("Error checking in.", {
+              toast.error("There was an error retrieving your check-in information.", {
                   position: "top-left",
                   autoClose: 5000,
                   theme: theme,
@@ -91,19 +103,19 @@ export const UserMenu = () => {
   // To change button styling on NavBar to show active location
   useEffect(() => {
     const onClick = () => {
-      if (window.location.pathname === "/stats") {
-        setActiveLink("stats");
+      if (window.location.pathname === `/stats/${userId}`) {
+        setActiveLink(`/stats/${userId}`);
       }
-      else if (window.location.pathname === "/journal") {
-        setActiveLink("journal");
-    }
-      else {
-        setActiveLink("home");
+      else if (window.location.pathname === `/journal/${userId}`) {
+        setActiveLink(`/journal/${userId}`);
+      }
+      else if (window.location.pathname === `/settings/${userId}`) {
+        setActiveLink(`/settings/${userId}`);
       }
     }
     window.addEventListener("click", onClick);
     return () => window.removeEventListener("click", onClick);
-  }, [])
+  }, [userId])
 
     return (
         <Container>
@@ -138,22 +150,42 @@ export const UserMenu = () => {
           </Modal>
           {/* End of popup modal */}
 
-          <Nav className="col-md-2 d-none d-md-block bg-transparent sidebar">
-
-                    <div className="button-nav" style={{marginTop: '2rem', marginLeft: '1rem'}} onClick={handleShow}>
+            {width > 1250
+            ?
+            (<Nav className="col-md-2 d-none d-md-block bg-transparent sidebar">
+                    <div className='button-nav' style={{marginTop: '2rem', marginLeft: '1rem'}} onClick={handleShow}>
                         Check-in
                     </div>
-                <Link to="/stats">
-                    <div className="button-nav" style={{marginTop: '2rem', marginLeft: '1rem'}}>
+                <Link to={`/stats/${userId}`}>
+                    <div className={activeLink === `/stats/${userId}` ? 'active-button-nav' : 'button-nav'} style={{marginTop: '2rem', marginLeft: '1rem'}}>
                         My Stats 
                     </div>
                 </Link>
-                <Link to="/journal">
-                  <div className="button-nav" style={{marginTop: '2rem', marginLeft: '1rem' }}>
-                      Journal
+                <Link to={`/journal/${userId}`}>
+                  <div className={activeLink === `/journal/${userId}` ? 'active-button-nav' : 'button-nav'} style={{marginTop: '2rem', marginLeft: '1rem' }}>
+                        Journal
                   </div>
+                </Link>
+                <Link to={`/settings/${userId}`}>
+                    <div className={activeLink === `/settings/${userId}` ? 'active-button-nav' : 'button-nav'} style={{marginTop: '2rem', marginLeft: '1rem'}}>
+                        Settings
+                    </div>
+                </Link>
+            </Nav>)
+                :
+            (<Nav className="col-md-2 d-none d-md-block bg-transparent sidebar">
+                    <Calendar2Check size={55} color="white" className="sideBarIcon" onClick={handleShow}/><br></br>
+                <Link to={`/stats/${userId}`}>
+                    <GraphDown size={55} color="white" className="sideBarIcon"/><br></br>
+                </Link>
+                <Link to={`/journal/${userId}`}>
+                    <Journal size={55} color="white" className="sideBarIcon"/><br></br>
                 </Link> 
-            </Nav> 
+                <Link to={`/settings/${userId}`}>
+                    <Gear size={59} color="white" className="sideBarIcon"/>
+                </Link>
+            </Nav>)
+            }
 
         </Container>
     )

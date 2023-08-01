@@ -103,31 +103,38 @@ export const Login = () => {
         <Container>
             <Row className="align-items-center">
 
-            <Col xs={14} md={8} xl={6}>
+            <Col xs={12} md={4} xl={6}>
                 <div className="animate__animated animate__zoomIn">
                     <img className="bee" src={BeeStick} alt="Bee holding honey stick"/>
                 </div>
             </Col>
 
-            <Col xs={14} md={8} xl={6}>
+            <Col xs={0} md={8} xl={6}>
             <div className="animate__animated animate__fadeIn">
                 <form onSubmit={handleSubmit}>
                     <div className="container">
                         
-                        <h1>Log<a>in</a></h1>
+                        <h1>Log<b>in</b></h1>
                         <h2>Bee-lieve in yourself!</h2>
 
                         <div className="iconDiv">
                             <Person size={24} color="#5d5d5d" className="icon"/>
                             <input type="text" placeholder="Enter Username" name="uname" value={user} onChange={(e) => setUser(e.target.value)} id="user" required className="text"></input>
                         </div>
+
+                        <div className="forgot">
+                            <Link to="/forgotpassword">Forgot username?</Link>
+                        </div>
+
                         <div className="iconDiv">
                             <Key size={24} color="#5d5d5d" className="icon"/>
                             {iconPassword}
                             <input type={passwordVisibility === 'true'? 'password' : 'text'} placeholder="Enter Password" value={psw} onChange={(e) => setPsw(e.target.value)} name="psw" id="psw" required className="text"></input>
                         </div>
 
-                        <Link to="/forgotpassword"><p><a>Forgot password?</a></p></Link>
+                        <div className="forgot">
+                            <Link to="/forgotpassword">Forgot password?</Link>
+                        </div>
 
                         <button type="submit">Login</button>
 

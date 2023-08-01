@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState, React } from "react";
+import { useState, useEffect, React } from "react";
 import { ThemeContext } from "./ThemeContext";
 import { LoginContext } from "./LoginContext";
 import { NavBar } from './components/NavBar.js';
@@ -13,14 +13,27 @@ import { Homepage } from './components/Homepage.js';
 import { Register } from './components/Register.js';
 import { Login } from './components/Login.js';
 import { ForgotPassword } from './components/ForgotPassword.js';
+import { ForgotUsername } from './components/ForgotUsername.js';
+import { ResetPassword } from './components/ResetPassword.js';
 import { UserHomepage } from './components/UserHomepage.js';
+import { Stats } from './components/Stats.js';
+import { Journal } from './components/Journal.js';
 
 function App() {
 
   // Theme is light by default
   const [theme, setTheme] = useState("light");
+  
   // False by default
-  const [loggedIn, setLoggedIn] = useState("false");
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("user") === null) {
+      setLoggedIn(false);
+    }
+    else {
+      setLoggedIn(true);
+    }
+  }, []);
 
   return (
     <div className="App">
@@ -33,7 +46,11 @@ function App() {
             <Route path="/register" element={<Register />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/forgotpassword" element={<ForgotPassword />}/>
+            <Route path="/forgotusername" element={<ForgotUsername />}/>
+            <Route path="/resetpassword" element={<ResetPassword />}/>
             <Route path="/home/:id" element={<UserHomepage />}/>
+            <Route path="/stats/:id" element={<Stats />}/>
+            <Route path="/journal/:id" element={<Journal />}/>
           </Routes>
           </LoginContext.Provider>
           </ThemeContext.Provider>

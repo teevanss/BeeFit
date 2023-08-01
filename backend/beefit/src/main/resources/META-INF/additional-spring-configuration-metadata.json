@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "beefit.app.jwtCookieName",
+    "type": "java.lang.String",
+    "description": "A description for 'beefit.app.jwtCookieName'"
+  },
+  {
+    "name": "beefit.app.jwtExpirationMs",
+    "type": "java.lang.String",
+    "description": "A description for 'beefit.app.jwtExpirationMs'"
+  },
+  {
+    "name": "beefit.app.jwtSecret",
+    "type": "java.lang.String",
+    "description": "A description for 'beefit.app.jwtSecret'"
+  },
+  {
+    "name": "beefit.app.jwtExpirationMs",
+    "type": "java.lang.String",
+    "description": "A description for 'beefit.app.jwtExpirationMs'"
+  }
+]}

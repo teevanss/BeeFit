@@ -27,15 +27,15 @@ export const Homepage = () => {
         <Container>
             <Row className="align-items-center">
 
-            <Col xs={14} md={8} xl={6}>
+            <Col xs={0} md={8} xl={6}>
                 <div className="animate__animated animate__fadeIn">
-                    <h1>Welcome to B<a>ee</a>Fit!</h1>
+                    <h1>Welcome to B<b>ee</b>Fit!</h1>
                     <p>Buzz! Daily self care is finally fun - take care of your pet by taking care of yourself!</p>
                     <Link to ="/register"><button>Get started <ArrowRightCircle size={25} /></button></Link>
                 </div>
             </Col>
 
-            <Col xs={14} md={8} xl={6}>
+            <Col xs={12} md={4} xl={6}>
                 <div className="animate__animated animate__zoomIn">
                     {beeImage}
                 </div>

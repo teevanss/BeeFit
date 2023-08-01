@@ -2,7 +2,6 @@ import { Container } from "react-bootstrap";
 import { useContext, } from 'react';
 import { ThemeContext } from '../ThemeContext';
 import { UserMenu } from './UserMenu.js';
-import 'react-toastify/dist/ReactToastify.css';
 import '../css/userhomepage.css';
 import 'animate.css';
 import BeeExcited from "../images/bee-excited.svg";
@@ -13,7 +12,7 @@ export const UserHomepage = () => {
 
     return ( 
 
-        <section className="user-home" id={theme === 'light' ? 'user-home' : 'user-home-dark'}> 
+        <section className="user-home-container" id={theme === 'light' ? 'user-home' : 'user-home-dark'}> 
         <Container>
 
             <div className="animate__animated animate__zoomIn">

@@ -34,6 +34,9 @@ public class User {
     @DBRef
     private Set<Role> roles = new HashSet<>();
 
+    @Size(max = 32)
+    private String resetPasswordToken;
+
     public User(){
     }
 
@@ -41,6 +44,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.resetPasswordToken = "";
     }
     
     public String getId(){
@@ -81,5 +85,13 @@ public class User {
 
     public void setRoles(Set<Role> roles){
         this.roles = roles;
+    }
+
+    public String getResetPasswordToken(){
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String token){
+        this.resetPasswordToken = token;
     }
 }
