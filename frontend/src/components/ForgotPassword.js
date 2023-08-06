@@ -76,7 +76,7 @@ export const ForgotPassword = () => {
     }
     return ( 
 
-        <section className="forgotpassword" id={theme === 'light' ? 'forgotpassword' : 'forgotpassword-dark'}>
+        <section className="forgot" id={theme === 'light' ? 'forgot' : 'forgot-dark'}>
         <Container>
             <Row className="align-items-center">
 

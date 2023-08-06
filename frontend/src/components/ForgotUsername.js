@@ -10,7 +10,7 @@ import BeeHoney from "../images/bee-honey.svg";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "../Axios.js";
-const FORGOTPASS_URL = "/api/forgotpw";
+const FORGOTUSER_URL = "/api/forgotuser";
 
 export const ForgotUsername = () => {
 
@@ -18,14 +18,14 @@ export const ForgotUsername = () => {
     const [email, setEmail] = useState("");
     const [success, setSuccess] = useState("false");
 
-    // Handle forgot password form
+    // Handle forgot username form
     const handleSubmit = async (e) => {
         e.preventDefault();
     
         // Send POST request
         try {
             const response = await axios.post(
-            FORGOTPASS_URL,
+            FORGOTUSER_URL,
             {
                 email: email,
             },
@@ -44,7 +44,7 @@ export const ForgotUsername = () => {
             // Successful POST request
             // Set success to true, so that we can redirect the user.
             setSuccess("true");
-            toast.success("We have sent a reset code to that email.",  {
+            toast.success("We have sent the associated username to that email.",  {
                 position: "top-left",
                 autoClose: 5000,
                 theme: theme,
@@ -71,12 +71,12 @@ export const ForgotUsername = () => {
     if (success === "true") {
 
         return (
-            <Navigate to="/resetpassword"/>
+            <Navigate to="/login"/>
         )
     }
     return ( 
 
-        <section className="forgotpassword" id={theme === 'light' ? 'forgotpassword' : 'forgotpassword-dark'}>
+        <section className="forgot" id={theme === 'light' ? 'forgot' : 'forgot-dark'}>
         <Container>
             <Row className="align-items-center">
 

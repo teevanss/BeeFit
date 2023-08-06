@@ -123,7 +123,7 @@ export const Login = () => {
                         </div>
 
                         <div className="forgot">
-                            <Link to="/forgotpassword">Forgot username?</Link>
+                            <Link to="/forgotusername">Forgot username?</Link>
                         </div>
 
                         <div className="iconDiv">
