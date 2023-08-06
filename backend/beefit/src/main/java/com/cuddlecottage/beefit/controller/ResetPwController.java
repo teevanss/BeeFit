@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cuddlecottage.beefit.Exception.EntityNotFoundException;
 import com.cuddlecottage.beefit.models.User;
-import com.cuddlecottage.beefit.payload.request.ForgotPwRequest;
+import com.cuddlecottage.beefit.payload.request.ForgotInfoRequest;
 import com.cuddlecottage.beefit.payload.request.ResetPwRequest;
 import com.cuddlecottage.beefit.payload.response.MessageResponse;
 import com.cuddlecottage.beefit.repository.UserRepository;
@@ -42,14 +42,30 @@ public class ResetPwController {
     @Autowired
     private JavaMailSender mailSender;
 
+    @PostMapping("/forgotuser")
+    public ResponseEntity<?> processForgotUsername(@Valid @RequestBody ForgotInfoRequest forgotRequest){
+        String email = forgotRequest.getEmail();
+
+        try{
+            String username = userService.findUsername(email);
+            sendUsernameEmail(email, username);
+        } catch(EntityNotFoundException ex){
+            return ResponseEntity.ok(new MessageResponse("Email couldn't be send properly."));
+        } catch(UnsupportedEncodingException | MessagingException e){
+            return ResponseEntity.ok(new MessageResponse("Error while sending email"));
+        }
+
+        return ResponseEntity.ok(new MessageResponse("Username reminder email has been sent."));
+    }
+
     @PostMapping("/forgotpw")
-    public ResponseEntity<?> processForgotPw(@Valid @RequestBody ForgotPwRequest forgotRequest){
+    public ResponseEntity<?> processForgotPw(@Valid @RequestBody ForgotInfoRequest forgotRequest){
         String email = forgotRequest.getEmail();
         String token = UUID.randomUUID().toString();
 
         try{
             userService.updateResetPasswordToken(token, email);
-            sendEmail(email, token);
+            sendTokenEmail(email, token);
         } catch(EntityNotFoundException ex){
             return ResponseEntity.ok(new MessageResponse("Email couldn't be send properly."));
         } catch(UnsupportedEncodingException | MessagingException e){
@@ -59,7 +75,32 @@ public class ResetPwController {
         return ResponseEntity.ok(new MessageResponse("Reset password email has been sent."));
     }
 
-    public void sendEmail(String recipientEmail, String token) 
+    public void sendUsernameEmail(String recipientEmail, String username)
+        throws MessagingException, UnsupportedEncodingException{
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message);
+
+            helper.setFrom("${spring.mail.username}", "BeeFit Support");
+            helper.setTo(recipientEmail);
+
+            String subject = "Username reminder.";
+
+            String content = "<p>Howdy,</p>"
+            + "<p>You have recently requested your username to be sent to you.</p>"
+            + "<p>This is the username associated to your email address:</p>"
+            + "<p>" + username + "</p>"
+            + "<p>Welcome back to BeeFit!</p>"
+            + "<br>"
+            + "<p>If you were not the person to request this email, "
+            + "please consider reseting your password for account security.</p>";
+
+            helper.setSubject(subject);
+            helper.setText(content, true);
+
+            mailSender.send(message);
+    }
+
+    public void sendTokenEmail(String recipientEmail, String token) 
         throws MessagingException, UnsupportedEncodingException{
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message);

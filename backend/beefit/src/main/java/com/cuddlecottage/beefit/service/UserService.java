@@ -43,6 +43,16 @@ public class UserService {
         }
     }
 
+    public String findUsername(String email) throws EntityNotFoundException{
+        User user = userRepository.findByEmail(email);
+        if(user != null){
+            return user.getUsername();
+        }
+        else{
+            throw new EntityNotFoundException();
+        }
+    }
+
     public User getByResetPasswordToken(String token){
         return userRepository.findByResetPasswordToken(token);
     }

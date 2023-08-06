@@ -30,8 +30,8 @@ import com.cuddlecottage.beefit.service.UserDetailsServiceImpl;
 @EnableMethodSecurity
 public class WebSecurityConfiguration {
 
-    @Autowired
-    private LoginSuccessHandler loginSuccessHandler;
+    //@Autowired
+    //private LoginSuccessHandler loginSuccessHandler;
 
     @Autowired
     private AuthEntryJointJwt unauthorizedHandler;
