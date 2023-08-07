@@ -1,6 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { Calendar2CheckFill } from 'react-bootstrap-icons';
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { ThemeContext } from '../ThemeContext';
 import { UserMenu } from './UserMenu.js';
 import { toast } from 'react-toastify';

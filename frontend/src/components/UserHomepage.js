@@ -1,18 +1,19 @@
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import { Pencil } from 'react-bootstrap-icons';
 import { useContext, useState } from 'react';
 import { ThemeContext } from '../ThemeContext';
 import { UserMenu } from './UserMenu.js';
 import { ProgressBar } from './ProgressBar.js';
+import { Bee } from './Bee.js';
 import '../css/userhomepage.css';
 import 'animate.css';
-import BeeExcited from "../images/bee-excited.svg";
 
 export const UserHomepage = () => {
 
     const {theme, setTheme} = useContext(ThemeContext);
     const [health, setHealth] = useState(50);
     const [hunger, setHunger] = useState(50);
-    const [happiness, setHappiness] = useState(50);
+    const [happiness, setHappiness] = useState(0);
 
     // Stats must stay between 0-100
     const stayInRange = (stat) => {
@@ -25,7 +26,7 @@ export const UserHomepage = () => {
     }
 
     const petBee = () => {
-        setHappiness((prev) => stayInRange(prev + 20));
+        setHappiness((prev) => stayInRange(prev + 10));
     }
 
     const cleanBee = () => {
@@ -36,28 +37,32 @@ export const UserHomepage = () => {
         setHunger((prev) => stayInRange(prev + 20));
     }
   
-
     return ( 
-
         <section className="user-home-container" id={theme === 'light' ? 'user-home' : 'user-home-dark'}> 
-        <Container>
+            <Container>
+                <Row>
+                    
+                    <Col xs={0} md={2} xl={2}>
+                            <UserMenu/>
+                    </Col>
 
-            <ProgressBar value={happiness} />
-            <button onClick={petBee}>Pet</button>
+                    <Col xs={12} md={10} xl={10}>
+                        <ProgressBar value={happiness}/>
+                        <button className="submit-button" style={{color: 'black', marginLeft: '0', }} onClick={petBee}>Pet <Pencil size={24} color="#5d5d5d" className="icon3"/> </button>
 
-            <ProgressBar value={health} />
-            <button onClick={cleanBee}>Clean</button>
+                        <ProgressBar value={health}/>
+                        <button className="submit-button" style={{color: 'black', marginLeft: '0' }} onClick={cleanBee}>Clean <Pencil size={24} color="#5d5d5d" className="icon3"/> </button>
 
-            <ProgressBar value={hunger} />
-            <button onClick={feedBee}>Feed</button>
+                        <ProgressBar value={hunger}/>
+                        <button className="submit-button" style={{color: 'black', marginLeft: '0' }} onClick={feedBee}>Feed <Pencil size={24} color="#5d5d5d" className="icon3"/> </button>
 
-            <div className="animate__animated animate__zoomIn">
-                <img className="bee-excited" src={BeeExcited} alt="A happy bee"/>
-            </div>
-    
-            <UserMenu/>
+                        <div className="animate__animated animate__zoomIn">
+                            <Bee happiness={happiness}/>
+                        </div>
+                    </Col>
 
-        </Container>
+                </Row>
+            </Container>
         </section>
   )
 }
