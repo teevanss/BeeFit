@@ -10,7 +10,7 @@ export const ProgressBar = (props) =>  {
       </Box>
 
       <Box minWidth={35}>
-        <h2>{`${Math.round(props.value,)}%`}</h2>
+        <h4 style={{paddingTop: '0.7rem'}}>{`${Math.round(props.value,)}%`}</h4>
       </Box>
 
     </Box>

@@ -17,23 +17,23 @@ export const Bee = (props) => {
     }, []);
 
   useEffect(() => {
-    if (props.happiness >= 51 && props.happiness <= 99) {   
-        setSrc(BeeHappy)
-    } 
-    else if (props.happiness <= 50 && props.happiness > 30){
-        setSrc(BeeAngry)
-    } 
-    else if (props.happiness === 100){
+    if (((props.happiness === 100) && (props.hunger === 100) && (props.health === 100))) {
         setSrc(BeeExcited)
     } 
-    else if (props.happiness <= 30) {
+    else if (((props.happiness <= 30) || (props.hunger <= 30) || (props.health <= 30))) {
         setSrc(BeeSad)
+    } 
+    else if ((((props.happiness <= 50) && (props.happiness > 30)) || ((props.hunger <= 50) && (props.hunger > 30)) || ((props.health <= 50) && (props.health > 30)))) {
+        setSrc(BeeAngry)
+    } 
+    else if ((((props.happiness >= 51) && (props.happiness <= 99)) || ((props.hunger >= 51) && (props.hunger <= 99)) || ((props.health >= 51) && (props.health <= 99)))) {   
+        setSrc(BeeHappy)
     } 
     else {
         setSrc(BeeExcited)
     }
 
-  }, [props.happiness]);
+  }, [props.happiness, props.hunger, props.health]);
 
   return (
     <img className="bee-home" alt="Bee" src={src} />

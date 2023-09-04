@@ -5,6 +5,7 @@
     --side-bar: #74191b;
     --border1: #c05230;
     --border2: #d86a2d;
+    --progress-bar: rgb(92, 102, 0);
 }
 
 /************ Fonts ************/
@@ -76,10 +77,20 @@
 .user-home-container h3 {
     text-align: center;
     font-family: AgrandirWide, sans-serif;
-    font-size: 40px;
+    font-size: 30px;
     letter-spacing: 1px;
     color: var(--text-color2);
     line-height: 1;
+    display: block;
+    transition: 0.3s ease-in-out;
+}
+
+.user-home-container h4 {
+    text-align: center;
+    font-family: TelegrafReg, sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: var(--text-color2);
     display: block;
     transition: 0.3s ease-in-out;
 }
@@ -109,6 +120,83 @@
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
+}
+
+/************ Popup Button CSS ************/
+.action-button:not(:disabled):hover {
+    transform: scale(1.05);
+}
+  
+.action-button:not(:disabled):hover:active {
+    transform: scale(1.05) translateY(.125rem);
+}
+  
+.action-button:focus {
+    outline: 0 solid transparent;
+}
+  
+.action-button:focus:before {
+    content: "";
+    left: calc(-1*.375rem);
+    pointer-events: none;
+    position: absolute;
+    top: calc(-1*.375rem);
+    transition: border-radius;
+    user-select: none;
+}
+  
+.action-button:focus:not(:focus-visible) {
+    outline: 0 solid transparent;
+}
+  
+.action-button:focus:not(:focus-visible):before {
+    border-width: 0;
+}
+  
+.action-button:not(:disabled):active {
+    transform: translateY(.125rem);
+}
+  
+.action-button {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    padding: 16px 0px;
+    border: 1px solid rgb(255, 255, 255);
+    font-family: TelegrafBold, sans-serif;
+    width: 150px;
+    flex-basis: 150px;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    flex-grow: 1;
+    color: black;
+    background-color: #fff;
+    backface-visibility: hidden;
+    border-radius: 5rem;
+    border-style: solid;
+    border-width: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    line-height: 1.3;
+    position: relative;
+    text-align: center;
+    transform: translateZ(0) scale(1);
+    transition: transform .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.css-5xe99f-MuiLinearProgress-bar1 { 
+    background-color: var(--progress-bar) !important;
+    transition: 0.3s ease-in-out;
+}
+
+.css-eglki6-MuiLinearProgress-root {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    background-color: white !important;
 }
 
 /************ Popup for Daily Check-in ************/
@@ -241,6 +329,7 @@
 }
   
 .submit-button {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     display: flex;
     text-align: center;
     font-family: TelegrafBold, sans-serif;

@@ -107,6 +107,7 @@ export const NavBar = () => {
     store.style.setProperty('--side-bar', '#74191b'); 
     store.style.setProperty('--border1', '#c05230');
     store.style.setProperty('--border2', '#d86a2d'); 
+    store.style.setProperty('--progress-bar', 'rgb(92, 102, 0)'); 
   }
   else if (theme === "dark") {
     store.style.setProperty('--text-color', 'black');
@@ -117,6 +118,7 @@ export const NavBar = () => {
     store.style.setProperty('--side-bar', '#400e44'); 
     store.style.setProperty('--border1', '#82264d');
     store.style.setProperty('--border2', '#6f205c');
+    store.style.setProperty('--progress-bar', 'rgb(29, 2, 41)'); 
   }
 
 // If logged in and width is less than 768, we combine the two navbars into one.
